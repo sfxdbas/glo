@@ -1,0 +1,55 @@
+currently in use  
+
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 256724 and 222827459 ); -- done batch 1
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 222827536 and 334789221 ); -- done batch 2
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 334789247 and 441065545 ); -- done batch 3
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 441065670 and 489034068 ); -- done batch 4
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 489034069 and 489889082 ); -- done batch 5 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 489889083 and 502867190 ); -- done batch 6
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 502867191 and 503721997 ); -- done batch 7 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 503721998 and 508073089 ); -- done batch 7
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 508073090 and 508928392 ); -- done batch 7
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 508928393 and 511281175 ); -- done batch 7
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 511281176 and 522058599 ); -- done batch 8
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 522058600 and 522914552 ); -- done batch 8
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 522914553 and 523945031 ); -- done batch 9
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 523945032 and 524803281 ); -- done batch 9
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 524803282 and 525660750 ); -- done batch 9
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 525660751 and 534309272 ); -- done batch 10
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 534309273 and 535171173 ); -- done batch 10
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 535171174 and 566010505 ); -- done batch 10
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 566010506 and 566864293 ); -- done batch 11
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 566864294 and 567718432 ); -- done batch 11
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 567718433 and 568574225 ); -- done batch 11
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 568574226 and 569428013 ); -- done batch 12
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 569428014 and 570281857 ); -- done batch 12
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 570281858 and 571139199 ); -- done batch 12
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 571139200 and 611206637 ); -- done batch 13
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 611206638 and 612060431 ); -- done batch 13
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 612060432 and 612914354 ); -- done batch 13
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 612914355 and 613768193 ); -- done batch 14 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 613768194 and 614622126 ); -- done batch 14
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 614622127 and 615476076 ); -- done batch 14
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 615476077 and 670033228 ); -- done batch 15 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 670033254 and 705864358 ); -- done batch 15 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 705864386 and 742672940 ); -- done batch 15 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 742672941 and 743526853 ); -- done batch 16 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 743526854 and 744380764 ); -- done batch 16 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 744380765 and 745234728 ); -- done batch 16 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 745234729 and 746088553 ); -- done batch 17
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 746088554 and 746942410 ); -- done batch 18
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 746942411 and 772431745 ); -- done batch 18
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 772431746 and 773290299 ); -- done batch 18
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 773290300 and 774148881 ); -- done batch 19
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 774148882 and 775007348 ); -- done batch 19
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 775007349 and 775865329 ); -- done batch 19
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 775865330 and 776723487 ); -- done batch 19
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 776723488 and 811413609 ); -- done batch 19
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 811413610 and 812278574 );  --done batch 20 
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 812278575 and 840337846 );  --done batch 20
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 840337874 and 869310852 );  --done batch 20
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 869310880 and 902208654 );  --done batch 20
+-- select * from pg_largeobject pg  where exists  (select 1  from passport p2 where p2.passport_data = pg.loid and basic_data_fk  between 902208683 and 1112512268);  --done batch 20
+																																								    
+
+-- select count(1) from pg_largeobject pg  where exists  (select 1  from passport p2 where  basic_data_fk  between 566010506 and 568574225);

@@ -1,0 +1,57 @@
+-- Fetch from nin db
+with t1 as (
+SELECT REPLACE(MSISDN, '234', '0') AS MSISDN, NIN,FIRSTNAME,LASTNAME
+FROM NIN_DATA nd 
+where length(REPLACE(MSISDN, '234', '0')) = 11
+AND FIRSTNAME IS NOT NULL 
+AND LASTNAME IS NOT null
+ORDER BY  DATEIN DESC
+)
+select * 
+from t1 
+where rownum <= 200000
+;
+
+
+-- Migrate to seamfix db
+ Use the DBeaver migration tool
+ 
+
+--  Create dummy table to hold records to be inserted into the nin_link_log table
+create table nin_data_06012021_v2 as
+select
+nextval('hibernate_sequence') pk,true as active,now() create_d,false deleted,now() l_m,bd.id b_id,null dob
+,dd.id d_id,nd.firstname,null linked,
+nd.msisdn,nd.nin,nd.lastname,'PENDING_VALIDATION',null v_l
+from
+	sms_activation_request sar, basic_data bd,
+	user_id ui ,
+	dynamic_data dd, nin_data_06012021 nd
+where
+	sar.unique_id = ui.unique_id
+	and bd.user_id_fk = ui.id
+	and dd.basic_data_fk = bd.id
+	and  nd.msisdn = sar.phone_number 
+	;
+ 
+ 
+-- Populate the nin_link_log ensuring no duplicate in NIN and MSISDNs
+insert into nin_link_log
+with t2 as (
+with t1 as 
+(
+select *, rank() over (partition by nin order by pk desc)
+from nin_data_06012021_v2
+)
+select * , rank() over (partition by msisdn order by pk desc) as rank2
+from t1 
+ where rank = 1
+limit 110000
+)
+select pk, active, create_d, deleted, l_m, b_id, dob, d_id, firstname, null, msisdn, nin, lastname, "?column?", v_l 
+from t2 
+where rank2 = 1
+and not exists 
+(select 1 from nin_link_log nll where nll.msisdn = t2.msisdn)
+limit 100000
+;

@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">120</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="bmanager" id="4">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://10.152.89.180:5445/biocapture</property>
+            <property name="odaUser">bmanager</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">YjNtQTdAI2czUl8xeUwy</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="44">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">msisdn</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">msisdn</text-property>
+                    <text-property name="heading">msisdn</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">passport</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">passport</text-property>
+                    <text-property name="heading">passport</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">msisdn</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">passport</property>
+                        <property name="dataType">blob</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">bmanager</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">msisdn</property>
+                    <property name="nativeName">msisdn</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">passport</property>
+                    <property name="nativeName">passport</property>
+                    <property name="dataType">blob</property>
+                    <property name="nativeDataType">-2</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[with t1 as (
+select sms.phone_number, 
+loread( lo_open( p.passport_data, 262144 ), 1000000 ) as photo,
+rank() over(partition by phone_number order by receipt_timestamp desc )
+from
+basic_data b
+join dynamic_data d on d.basic_data_fk = b.ID
+join meta_data m on m.basic_data_fk = b.ID
+join user_id u on b.user_id_fk = u.ID
+join sms_activation_request sms on u.UNIQUE_ID = sms.UNIQUE_ID
+join bfp_sync_log bsl on u.unique_id = bsl.unique_id
+join passport p on p.basic_data_fk = b.id
+left join km_user ku on LOWER(b.biometric_capture_agent) = LOWER(ku.email_address)
+left join kyc_dealer kd on ku.dealer_fk = kd.pk 
+where bsl.msisdn = sms.phone_number
+and bsl.bfpsyncstatusenum = 'SUCCESS'
+and bsl.activationstatusenum = 'ACTIVATED'
+and sms.phone_number in ('09157547376',
+'08074250179',
+'08074169970',
+'08074169710',
+'08074169982',
+'08074169949',
+'08074169923',
+'08074169912',
+'08074170145',
+'08074169940',
+'08074250600',
+'08074250499',
+'09152931798',
+'09152931810',
+'09152931797',
+'09152931812',
+'09152931806',
+'09152931814',
+'09152931801',
+'09152934759',
+'09152934725',
+'09151888160',
+'09153410559',
+'09151851010',
+'09153410159',
+'09153410148',
+'09153410165',
+'09153410184',
+'09153410569',
+'09153410185',
+'09153410186',
+'09153410567',
+'09157640745',
+'09157640729',
+'09157640736',
+'09157642197',
+'09157642158',
+'09157640748',
+'09157640715',
+'09157642206',
+'09157642205',
+'09157642169',
+'09157642185',
+'09157640742',
+'09157640733',
+'09157642198',
+'09157642182',
+'09157642179',
+'09157640772',
+'09157642203',
+'09157640749',
+'09157642149',
+'09157642171',
+'09157642208',
+'09157640727',
+'09157642196',
+'09157642166',
+'09157640712',
+'09157642187',
+'09157640724',
+'09157640728',
+'09157640731',
+'09157642163',
+'09157640751',
+'09157642202',
+'09157642180',
+'09157640743',
+'09157642211',
+'09157642167',
+'09157642165',
+'09157642170',
+'09157642164',
+'09157640711',
+'09157642178',
+'09157642188',
+'09157640747',
+'09157642181',
+'09156447160',
+'09156447143',
+'09156447142',
+'09155823075',
+'09156447112',
+'09156447111',
+'09156447168',
+'09156447136',
+'09157640719',
+'09157640720',
+'09157640723',
+'09157642252',
+'09157640768',
+'09157642238',
+'09157640704',
+'09157640682',
+'09157641721',
+'09157642242',
+'08158028713',
+'09151998905',
+'09159403360',
+'09159403358',
+'09150525714',
+'09150525736',
+'09150525750',
+'09059429815',
+'09059429804',
+'09059429784',
+'09150525758',
+'09059429588',
+'09059430234',
+'09150525712',
+'09059429651',
+'09150525727',
+'09059429875',
+'09059429714',
+'09155723540',
+'08055701801',
+'09150523062',
+'09150522781',
+'09150522950',
+'09150522974',
+'08055701584',
+'09155723538',
+'09150523045',
+'08111857405',
+'09150523074',
+'09159747285',
+'08111856053',
+'09150522940',
+'08157052017',
+'09150522963',
+'08118057597',
+'08055702415',
+'09059430146',
+'08111859394',
+'09155723552',
+'09155723562',
+'08112404891',
+'09155723541',
+'08111856902',
+'08119872271',
+'07053141658',
+'09152782749',
+'09152782746',
+'09152782741',
+'09152782733',
+'09155860479',
+'09151963563',
+'09151959362',
+'07051422925',
+'09156039306',
+'08071932483',
+'09150623108',
+'07071772576',
+'07051198682',
+'09155873267') 
+)
+select phone_number as MSISDN,photo AS passport
+from t1 
+where rank = 1
+order by phone_number]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>msisdn</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>msisdn</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>msisdn</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>passport</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-2</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>passport</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>passport</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="NewStyle" id="5">
+            <property name="backgroundImage">images/glo_bkg.png</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">us-letter</property>
+            <property name="orientation">portrait</property>
+            <property name="bottomMargin">5.733333333333333in</property>
+            <property name="style">NewStyle</property>
+            <property name="backgroundSizeHeight">contain</property>
+            <property name="backgroundSizeWidth">contain</property>
+            <property name="height">297mm</property>
+            <property name="width">210mm</property>
+            <property name="headerHeight">1.05in</property>
+            <property name="footerHeight">0.9in</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <label id="34"/>
+        <label id="38"/>
+        <label id="37"/>
+        <label id="36"/>
+        <label id="35"/>
+        <label id="41"/>
+        <label id="40"/>
+        <label id="39"/>
+        <table id="45">
+            <property name="textAlign">center</property>
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">msisdn</property>
+                    <text-property name="displayName">msisdn</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["msisdn"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">passport</property>
+                    <text-property name="displayName">passport</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["passport"]</expression>
+                    <property name="dataType">blob</property>
+                </structure>
+            </list-property>
+            <column id="59"/>
+            <column id="60"/>
+            <header>
+                <row id="46">
+                    <property name="backgroundColor">#008400</property>
+                    <property name="fontSize">12pt</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#FFFFFF</property>
+                    <cell id="47">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="48">
+                            <text-property name="text">msisdn</text-property>
+                        </label>
+                    </cell>
+                    <cell id="49">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="50">
+                            <text-property name="text">passport</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="51">
+                    <cell id="52">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="53">
+                            <property name="resultSetColumn">msisdn</property>
+                        </data>
+                    </cell>
+                    <cell id="54">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <image id="63">
+                            <property name="height">150px</property>
+                            <property name="width">187px</property>
+                            <property name="source">expr</property>
+                            <expression name="valueExpr">row["passport"]</expression>
+                        </image>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="56">
+                    <cell id="57">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="58">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

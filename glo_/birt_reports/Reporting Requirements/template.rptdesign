@@ -1,0 +1,2495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
+    <text-property name="title">QUARANTINED AND SUCCESSFUL RECORDS</text-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">fixed layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">72</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="pg" id="2144">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://localhost:5444/biocapture_staging</property>
+            <property name="odaUser">enterprisedb</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">ckBnYm9qMCM=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="f_time" id="1899">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">t</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">t</text-property>
+                    <text-property name="heading">t</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">t</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">pg</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">t</property>
+                    <property name="nativeName">t</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT 'Quarantined Records For '||  DATE(NOW()) AS T]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>t</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>t</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>t</design:label>
+            <design:formattingHints>
+              <design:displaySize>29</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="failed_reg" id="5">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">rejection_reason</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">rejection_reason</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">rejection_reason</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">12 - 2 AM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">12 - 2 AM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">12 - 2 AM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">3 - 5 AM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">3 - 5 AM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">3 - 5 AM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">6 - 8 AM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">6 - 8 AM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">6 - 8 AM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">9 - 11 AM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">9 - 11 AM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">9 - 11 AM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">12 - 2 PM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">12 - 2 PM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">12 - 2 PM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">3 - 5 PM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">3 - 5 PM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">3 - 5 PM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">6 - 8 PM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">6 - 8 PM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">6 - 8 PM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">9 - 11 PM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">9 - 11 PM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">9 - 11 PM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">total</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">total</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">total</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">rejection_reason</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">12 - 2 AM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">3 - 5 AM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">6 - 8 AM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">9 - 11 AM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">12 - 2 PM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">3 - 5 PM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">6 - 8 PM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">9 - 11 PM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">total</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">pg</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">rejection_reason</property>
+                    <property name="nativeName">rejection_reason</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">12 - 2 AM</property>
+                    <property name="nativeName">12 - 2 AM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">3 - 5 AM</property>
+                    <property name="nativeName">3 - 5 AM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">6 - 8 AM</property>
+                    <property name="nativeName">6 - 8 AM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">9 - 11 AM</property>
+                    <property name="nativeName">9 - 11 AM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">12 - 2 PM</property>
+                    <property name="nativeName">12 - 2 PM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">3 - 5 PM</property>
+                    <property name="nativeName">3 - 5 PM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">6 - 8 PM</property>
+                    <property name="nativeName">6 - 8 PM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">9 - 11 PM</property>
+                    <property name="nativeName">9 - 11 PM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">total</property>
+                    <property name="nativeName">total</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select rejection_reason,
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (0,1,2) then 1 else 0 end) as "12 - 2 AM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (3,4,5) then 1 else 0 end) as "3 - 5 AM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (6,7,8) then 1 else 0 end) as "6 - 8 AM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (9,10,11) then 1 else 0 end) as "9 - 11 AM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (12,13,14) then 1 else 0 end) as "12 - 2 PM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (15,16,17) then 1 else 0 end) as "3 - 5 PM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (18,19,20) then 1 else 0 end) as "6 - 8 PM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (21,22,23) then 1 else 0 end) as "9 - 11 PM"
+ 	, count(1) total
+from bfp_sync_log
+where bfpsyncstatusenum = 'ERROR'
+and rejection_reason is not null
+and DATE(CREATE_DATE) = DATE(NOW())
+group by 1
+--union all
+--select 'TOTAL',2.0, COUNT(1)
+--from bfp_sync_log
+--where bfpsyncstatusenum = 'ERROR'
+--and rejection_reason is not null
+order by 1
+;]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="results_details" id="2103">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">rejection_reason</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">rejection_reason</text-property>
+                    <text-property name="heading">rejection_reason</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">msisdn</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">msisdn</text-property>
+                    <text-property name="heading">msisdn</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">create_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">create_date</text-property>
+                    <text-property name="heading">create_date</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">rejection_reason</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">msisdn</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">create_date</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">pg</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">rejection_reason</property>
+                    <property name="nativeName">rejection_reason</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">msisdn</property>
+                    <property name="nativeName">msisdn</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">create_date</property>
+                    <property name="nativeName">create_date</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[
+-- schedule report at :59 
+select rejection_reason, msisdn, create_date
+from bfp_sync_log
+where bfpsyncstatusenum = 'ERROR'
+and rejection_reason is not null
+and date(create_date) = date(now())
+--and case 
+--		when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) between 0 and 2 then true 
+--		when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) between 3 and 5 then true 
+--		when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) between 6 and 8 then true 
+--		when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) between 9 and 11 then true 
+--		when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) between 12 and 14 then true 
+--		when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) between 15 and 17 then true 
+--		when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) between 18 and 20 then true
+--		when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) between 21 and 23 then true 
+----(ROUND(EXTRACT(hour from now()-69)::numeric,2)-2, ROUND(EXTRACT(hour from now()-69)::numeric,2)-1, ROUND(EXTRACT(hour from now()-69)::numeric,2))  
+----then true 
+--	else false end
+and ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) = ROUND(EXTRACT(hour from now())::numeric,2)
+order by 1;
+
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>rejection_reason</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>rejection_reason</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>rejection_reason</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>msisdn</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>msisdn</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>msisdn</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>create_date</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>create_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>create_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>29</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="s_time" id="1987">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">t</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">t</text-property>
+                    <text-property name="heading">t</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">t</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">pg</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">t</property>
+                    <property name="nativeName">t</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT 'Successful Records For '||  DATE(NOW()) AS T]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>t</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>t</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>t</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="success_reg" id="1903">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">type</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">type</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">type</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">12 - 2 AM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">12 - 2 AM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">12 - 2 AM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">3 - 5 AM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">3 - 5 AM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">3 - 5 AM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">6 - 8 AM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">6 - 8 AM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">6 - 8 AM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">9 - 11 AM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">9 - 11 AM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">9 - 11 AM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">12 - 2 PM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">12 - 2 PM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">12 - 2 PM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">3 - 5 PM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">3 - 5 PM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">3 - 5 PM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">6 - 8 PM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">6 - 8 PM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">6 - 8 PM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">9 - 11 PM</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">9 - 11 PM</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">9 - 11 PM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">total</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">total</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">total</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">type</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">12 - 2 AM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">3 - 5 AM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">6 - 8 AM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">9 - 11 AM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">12 - 2 PM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">3 - 5 PM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">6 - 8 PM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">9 - 11 PM</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">total</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">pg</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">type</property>
+                    <property name="nativeName">type</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">12 - 2 AM</property>
+                    <property name="nativeName">12 - 2 AM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">3 - 5 AM</property>
+                    <property name="nativeName">3 - 5 AM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">6 - 8 AM</property>
+                    <property name="nativeName">6 - 8 AM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">9 - 11 AM</property>
+                    <property name="nativeName">9 - 11 AM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">12 - 2 PM</property>
+                    <property name="nativeName">12 - 2 PM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">3 - 5 PM</property>
+                    <property name="nativeName">3 - 5 PM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">6 - 8 PM</property>
+                    <property name="nativeName">6 - 8 PM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">9 - 11 PM</property>
+                    <property name="nativeName">9 - 11 PM</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">total</property>
+                    <property name="nativeName">total</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select case when rejection_reason is null then 'SUCCESSFUL REGISTRATION' else REJECTION_REASON end as Type,
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (0,1,2) then 1 else 0 end) as "12 - 2 AM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (3,4,5) then 1 else 0 end) as "3 - 5 AM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (6,7,8) then 1 else 0 end) as "6 - 8 AM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (9,10,11) then 1 else 0 end) as "9 - 11 AM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (12,13,14) then 1 else 0 end) as "12 - 2 PM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (15,16,17) then 1 else 0 end) as "3 - 5 PM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (18,19,20) then 1 else 0 end) as "6 - 8 PM",
+ 	SUM(case when ROUND(EXTRACT(hour from CREATE_DATE)::numeric,2) in (21,22,23) then 1 else 0 end) as "9 - 11 PM"
+ 	, count(1) total
+from bfp_sync_log
+where bfpsyncstatusenum = 'SUCCESS'
+and DATE(CREATE_DATE) = DATE(NOW())
+group by 1
+
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>type</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2147483647</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>type</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>type</design:label>
+            <design:formattingHints>
+              <design:displaySize>2147483647</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>12 - 2 AM</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>12 - 2 AM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>12 - 2 AM</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>3 - 5 AM</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>3 - 5 AM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>3 - 5 AM</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>6 - 8 AM</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>6 - 8 AM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>6 - 8 AM</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>9 - 11 AM</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>9 - 11 AM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>9 - 11 AM</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>12 - 2 PM</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>12 - 2 PM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>12 - 2 PM</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>3 - 5 PM</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>3 - 5 PM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>3 - 5 PM</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>6 - 8 PM</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>6 - 8 PM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>6 - 8 PM</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>9 - 11 PM</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>9 - 11 PM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>9 - 11 PM</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>total</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>total</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>total</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">landscape</property>
+            <property name="topMargin">0.18055555555555555in</property>
+            <property name="bottomMargin">0.041666666666666664in</property>
+            <property name="backgroundImage">images/glo_bkg.png</property>
+            <property name="backgroundSizeHeight">contain</property>
+            <property name="backgroundSizeWidth">contain</property>
+            <property name="headerHeight">1.05in</property>
+            <property name="footerHeight">0.9in</property>
+            <page-footer>
+                <grid id="370">
+                    <property name="backgroundPositionX">0%</property>
+                    <property name="backgroundPositionY">-15%</property>
+                    <property name="backgroundRepeat">repeat</property>
+                    <property name="backgroundSizeHeight">cover</property>
+                    <property name="backgroundSizeWidth">cover</property>
+                    <property name="fontFamily">"Calibri"</property>
+                    <property name="fontSize">small</property>
+                    <property name="fontWeight">normal</property>
+                    <property name="color">white</property>
+                    <property name="width">100%</property>
+                    <column id="371"/>
+                    <column id="372"/>
+                    <column id="373"/>
+                    <row id="374">
+                        <cell id="375">
+                            <property name="colSpan">3</property>
+                            <property name="rowSpan">1</property>
+                            <grid id="147">
+                                <property name="width">100%</property>
+                                <column id="148"/>
+                                <column id="149"/>
+                                <row id="150">
+                                    <cell id="151"/>
+                                    <cell id="152"/>
+                                </row>
+                            </grid>
+                        </cell>
+                    </row>
+                    <row id="377">
+                        <cell id="378">
+                            <text id="3">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">12pt</property>
+                                <property name="textAlign">left</property>
+                                <property name="contentType">html</property>
+                                <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="379">
+                            <text id="153">
+                                <property name="fontSize">12pt</property>
+                                <property name="textAlign">right</property>
+                                <property name="contentType">html</property>
+                                <text-property name="content"><![CDATA[Powered By Seamfix Ltd. 
+<a href="http://www.seamfix.com/"> www.seamfix.com</a>
+]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="380">
+                            <auto-text id="381">
+                                <property name="fontSize">12pt</property>
+                                <property name="textAlign">right</property>
+                                <property name="type">page-number</property>
+                            </auto-text>
+                        </cell>
+                    </row>
+                </grid>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <label id="4">
+            <text-property name="text"></text-property>
+        </label>
+        <label id="9">
+            <text-property name="text"></text-property>
+        </label>
+        <label id="10">
+            <text-property name="text"></text-property>
+        </label>
+        <data id="1902">
+            <property name="fontFamily">"Tahoma"</property>
+            <property name="fontSize">18pt</property>
+            <property name="fontWeight">normal</property>
+            <property name="textAlign">left</property>
+            <property name="dataSet">f_time</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">t</property>
+                    <text-property name="displayName">t</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["t"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">t</property>
+        </data>
+        <label id="1742"/>
+        <table id="1823">
+            <property name="fontFamily">"Tahoma"</property>
+            <property name="width">100%</property>
+            <property name="dataSet">failed_reg</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">rejection_reason</property>
+                    <text-property name="displayName">rejection_reason</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["rejection_reason"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">12 - 2 AM</property>
+                    <text-property name="displayName">12 - 2 AM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["12 - 2 AM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">3 - 5 AM</property>
+                    <text-property name="displayName">3 - 5 AM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["3 - 5 AM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">6 - 8 AM</property>
+                    <text-property name="displayName">6 - 8 AM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["6 - 8 AM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">9 - 11 AM</property>
+                    <text-property name="displayName">9 - 11 AM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["9 - 11 AM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">12 - 2 PM</property>
+                    <text-property name="displayName">12 - 2 PM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["12 - 2 PM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">3 - 5 PM</property>
+                    <text-property name="displayName">3 - 5 PM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["3 - 5 PM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">6 - 8 PM</property>
+                    <text-property name="displayName">6 - 8 PM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["6 - 8 PM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">9 - 11 PM</property>
+                    <text-property name="displayName">9 - 11 PM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["9 - 11 PM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">total</property>
+                    <text-property name="displayName">total</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["total"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">RUNNINGCOUNT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                        </structure>
+                    </list-property>
+                    <expression name="filterExpr" type="javascript">dataSetRow["rejection_reason"]</expression>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Column Binding</property>
+                    <expression name="expression" type="javascript">if (dataSetRow["rejection_reason"] == null)
+'No Records For Today'</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <list-property name="sort">
+                <structure>
+                    <expression name="key" type="javascript">row["rejection_reason"]</expression>
+                    <property name="direction">asc</property>
+                    <property name="strength">-1</property>
+                </structure>
+            </list-property>
+            <column id="1837">
+                <property name="width">25%</property>
+            </column>
+            <column id="1838">
+                <property name="width">5%</property>
+            </column>
+            <column id="1843">
+                <property name="width">5%</property>
+            </column>
+            <column id="1868">
+                <property name="width">5%</property>
+            </column>
+            <column id="1865">
+                <property name="width">5%</property>
+            </column>
+            <column id="1873">
+                <property name="width">5%</property>
+            </column>
+            <column id="1879">
+                <property name="width">5%</property>
+            </column>
+            <column id="1876">
+                <property name="width">5%</property>
+            </column>
+            <column id="1862">
+                <property name="width">5%</property>
+            </column>
+            <column id="1885">
+                <property name="width">5%</property>
+            </column>
+            <header>
+                <row id="1997">
+                    <property name="backgroundImage">images/g.png</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#FFFFFF</property>
+                    <cell id="1998">
+                        <property name="backgroundColor">white</property>
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="1999">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2008">
+                            <property name="fontFamily">"Arial Black"</property>
+                            <property name="fontSize">14pt</property>
+                            <text-property name="text">AM</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2003">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2009">
+                            <property name="fontFamily">"Arial Black"</property>
+                            <property name="fontSize">14pt</property>
+                            <text-property name="text">PM</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2007">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                </row>
+                <row id="1824">
+                    <property name="backgroundImage">images/g.png</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#FFFFFF</property>
+                    <property name="verticalAlign">bottom</property>
+                    <cell id="1826">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1845">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[QUARANTINE REASON]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1827">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1846">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[12 - 2]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1841">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1847">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[3 - 5]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1866">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1869">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[6 - 8]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1863">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1870">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[9 - 11]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1871">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1880">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[12 - 2]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1877">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1881">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[3 - 5]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1874">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1882">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[6 - 8]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1860">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1886">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[9 - 11]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1883">
+                        <property name="borderBottomColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#FFFFFF</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#FFFFFF</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#FFFFFF</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1887">
+                            <property name="fontSize">11pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[TOTAL]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="1855">
+                    <property name="textAlign">center</property>
+                    <list-property name="highlightRules">
+                        <structure>
+                            <property name="operator">eq</property>
+                            <property name="backgroundColor">#D5D5D5</property>
+                            <expression name="testExpr" type="javascript">row.__rownum%2</expression>
+                            <simple-property-list name="value1">
+                                <value type="javascript">0</value>
+                            </simple-property-list>
+                        </structure>
+                    </list-property>
+                    <cell id="1857">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <property name="verticalAlign">bottom</property>
+                        <data id="1888">
+                            <property name="fontSize">11pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">rejection_reason</property>
+                        </data>
+                    </cell>
+                    <cell id="1858">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1889">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">12 - 2 AM</property>
+                        </data>
+                    </cell>
+                    <cell id="1859">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1890">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">3 - 5 AM</property>
+                        </data>
+                    </cell>
+                    <cell id="1867">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1891">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">6 - 8 AM</property>
+                        </data>
+                    </cell>
+                    <cell id="1864">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1892">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">9 - 11 AM</property>
+                        </data>
+                    </cell>
+                    <cell id="1872">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1893">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">12 - 2 PM</property>
+                        </data>
+                    </cell>
+                    <cell id="1878">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1894">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">3 - 5 PM</property>
+                        </data>
+                    </cell>
+                    <cell id="1875">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1895">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">6 - 8 PM</property>
+                        </data>
+                    </cell>
+                    <cell id="1861">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1896">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">9 - 11 PM</property>
+                        </data>
+                    </cell>
+                    <cell id="1884">
+                        <property name="backgroundColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1897">
+                            <property name="fontSize">11pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">total</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="2142">
+                    <cell id="2143">
+                        <property name="colSpan">10</property>
+                        <property name="rowSpan">1</property>
+                        <data id="2044">
+                            <property name="fontSize">15pt</property>
+                            <property name="fontStyle">italic</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">Column Binding</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <label id="1992"/>
+        <data id="1988">
+            <property name="fontFamily">"Tahoma"</property>
+            <property name="fontSize">18pt</property>
+            <property name="fontWeight">normal</property>
+            <property name="textAlign">left</property>
+            <property name="dataSet">s_time</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">t</property>
+                    <text-property name="displayName">t</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["t"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">t</property>
+        </data>
+        <label id="1840"/>
+        <table id="1904">
+            <property name="width">100%</property>
+            <property name="dataSet">success_reg</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">type</property>
+                    <text-property name="displayName">type</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["type"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">12 - 2 AM</property>
+                    <text-property name="displayName">12 - 2 AM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["12 - 2 AM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">3 - 5 AM</property>
+                    <text-property name="displayName">3 - 5 AM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["3 - 5 AM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">6 - 8 AM</property>
+                    <text-property name="displayName">6 - 8 AM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["6 - 8 AM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">9 - 11 AM</property>
+                    <text-property name="displayName">9 - 11 AM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["9 - 11 AM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">12 - 2 PM</property>
+                    <text-property name="displayName">12 - 2 PM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["12 - 2 PM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">3 - 5 PM</property>
+                    <text-property name="displayName">3 - 5 PM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["3 - 5 PM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">6 - 8 PM</property>
+                    <text-property name="displayName">6 - 8 PM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["6 - 8 PM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">9 - 11 PM</property>
+                    <text-property name="displayName">9 - 11 PM</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["9 - 11 PM"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">total</property>
+                    <text-property name="displayName">total</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["total"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">RUNNINGCOUNT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                        </structure>
+                    </list-property>
+                    <expression name="filterExpr" type="javascript">dataSetRow["type"]</expression>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_1</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">RUNNINGCOUNT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                        </structure>
+                    </list-property>
+                    <expression name="filterExpr" type="javascript">dataSetRow["type"]</expression>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Column Binding</property>
+                    <expression name="expression" type="javascript">if (dataSetRow["type"] == null)
+'No Records For Today'</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="1953">
+                <property name="width">11%</property>
+            </column>
+            <column id="1954">
+                <property name="width">11%</property>
+            </column>
+            <column id="1955">
+                <property name="width">11%</property>
+            </column>
+            <column id="1956">
+                <property name="width">11%</property>
+            </column>
+            <column id="1957">
+                <property name="width">11%</property>
+            </column>
+            <column id="1958">
+                <property name="width">11%</property>
+            </column>
+            <column id="1959">
+                <property name="width">11%</property>
+            </column>
+            <column id="1960">
+                <property name="width">11%</property>
+            </column>
+            <column id="1961">
+                <property name="width">11%</property>
+            </column>
+            <header>
+                <row id="2010">
+                    <property name="backgroundColor">#408080</property>
+                    <property name="backgroundImage">images/g.png</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#FFFFFF</property>
+                    <cell id="2011">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2020">
+                            <property name="fontFamily">"Arial Black"</property>
+                            <property name="fontSize">14pt</property>
+                            <text-property name="text">AM</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2015">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2021">
+                            <property name="fontFamily">"Arial Black"</property>
+                            <property name="fontSize">14pt</property>
+                            <text-property name="text">PM</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2019">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                </row>
+                <row id="1905">
+                    <property name="backgroundColor">#408080</property>
+                    <property name="backgroundImage">images/g.png</property>
+                    <property name="fontFamily">"Tahoma"</property>
+                    <property name="fontSize">14pt</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#FFFFFF</property>
+                    <cell id="1910">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1911">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[12 - 2]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1912">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1913">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[3 - 5]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1914">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1915">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[6 - 8]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1916">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1917">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[9 - 11]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1918">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1919">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[12 - 2]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1920">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1921">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[3 - 5]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1922">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1923">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[6 - 8]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1924">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1925">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[9 - 11]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1926">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <text id="1927">
+                            <property name="fontWeight">bold</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[TOTAL]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="1962">
+                    <property name="fontFamily">"Tahoma"</property>
+                    <property name="fontSize">14pt</property>
+                    <property name="textAlign">center</property>
+                    <cell id="1965">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1974">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">12 - 2 AM</property>
+                                    <text-property name="displayName">12 - 2 AM</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["12 - 2 AM"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">12 - 2 AM</property>
+                        </data>
+                    </cell>
+                    <cell id="1966">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1976">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">3 - 5 AM</property>
+                                    <text-property name="displayName">3 - 5 AM</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["3 - 5 AM"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">3 - 5 AM</property>
+                        </data>
+                    </cell>
+                    <cell id="1967">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1978">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">6 - 8 AM</property>
+                                    <text-property name="displayName">6 - 8 AM</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["6 - 8 AM"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">6 - 8 AM</property>
+                        </data>
+                    </cell>
+                    <cell id="1968">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1980">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">9 - 11 AM</property>
+                                    <text-property name="displayName">9 - 11 AM</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["9 - 11 AM"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">9 - 11 AM</property>
+                        </data>
+                    </cell>
+                    <cell id="1969">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1975">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">12 - 2 PM</property>
+                                    <text-property name="displayName">12 - 2 PM</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["12 - 2 PM"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">12 - 2 PM</property>
+                        </data>
+                    </cell>
+                    <cell id="1970">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1977">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">3 - 5 PM</property>
+                                    <text-property name="displayName">3 - 5 PM</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["3 - 5 PM"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">3 - 5 PM</property>
+                        </data>
+                    </cell>
+                    <cell id="1971">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1979">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">6 - 8 PM</property>
+                                    <text-property name="displayName">6 - 8 PM</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["6 - 8 PM"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">6 - 8 PM</property>
+                        </data>
+                    </cell>
+                    <cell id="1972">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1981">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">9 - 11 PM</property>
+                                    <text-property name="displayName">9 - 11 PM</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["9 - 11 PM"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">9 - 11 PM</property>
+                        </data>
+                    </cell>
+                    <cell id="1973">
+                        <property name="backgroundColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="1982">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="dataSet">success_reg</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">total</property>
+                                    <text-property name="displayName">total</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["total"]</expression>
+                                    <property name="dataType">decimal</property>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">total</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="2022">
+                    <cell id="2023">
+                        <property name="colSpan">9</property>
+                        <property name="rowSpan">1</property>
+                        <data id="2032">
+                            <property name="fontFamily">"Tahoma"</property>
+                            <property name="fontSize">15pt</property>
+                            <property name="fontStyle">italic</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">Column Binding</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <label id="1989"/>
+        <label id="2045">
+            <property name="fontFamily">"Tahoma"</property>
+            <property name="fontSize">15pt</property>
+            <text-property name="text">QUARANTINED RECORDS DETAILS</text-property>
+        </label>
+        <table id="2046">
+            <property name="width">100%</property>
+            <property name="dataSet">results_details</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">rejection_reason</property>
+                    <text-property name="displayName">rejection_reason</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["rejection_reason"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">msisdn</property>
+                    <text-property name="displayName">msisdn</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["msisdn"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">create_date</property>
+                    <text-property name="displayName">create_date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["create_date"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">RUNNINGCOUNT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                        </structure>
+                    </list-property>
+                    <expression name="filterExpr" type="javascript">dataSetRow["msisdn"]</expression>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_1</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">RUNNINGCOUNT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                        </structure>
+                    </list-property>
+                    <expression name="filterExpr" type="javascript">dataSetRow["msisdn"]</expression>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="2132">
+                <property name="width">5%</property>
+            </column>
+            <column id="2121">
+                <property name="width">20%</property>
+            </column>
+            <column id="2135">
+                <property name="width">17%</property>
+            </column>
+            <column id="2102">
+                <property name="width">11%</property>
+            </column>
+            <header>
+                <row id="2047">
+                    <property name="backgroundColor">#408080</property>
+                    <property name="backgroundImage">images/g.png</property>
+                    <property name="fontFamily">"Arial Black"</property>
+                    <property name="fontSize">10pt</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#FFFFFF</property>
+                    <cell id="2130">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2049">
+                            <property name="fontFamily">"Arial Black"</property>
+                            <property name="fontSize">14pt</property>
+                            <text-property name="text">S/N</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2118">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2122">
+                            <property name="fontFamily">"Arial Black"</property>
+                            <property name="fontSize">14pt</property>
+                            <text-property name="text">QUARANTINE REASON</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2133">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2051">
+                            <property name="fontFamily">"Arial Black"</property>
+                            <property name="fontSize">14pt</property>
+                            <text-property name="text">MSISDN</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2052">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2117">
+                            <property name="fontFamily">"Arial Black"</property>
+                            <property name="fontSize">14pt</property>
+                            <text-property name="text">TIME</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="2106">
+                    <property name="fontFamily">"Tahoma"</property>
+                    <property name="fontSize">12pt</property>
+                    <property name="textAlign">center</property>
+                    <cell id="2131">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2139">
+                            <property name="resultSetColumn">Aggregation_1</property>
+                        </data>
+                    </cell>
+                    <cell id="2119">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2138">
+                            <property name="resultSetColumn">rejection_reason</property>
+                        </data>
+                    </cell>
+                    <cell id="2134">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2137">
+                            <property name="resultSetColumn">msisdn</property>
+                        </data>
+                    </cell>
+                    <cell id="2115">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2136">
+                            <property name="resultSetColumn">create_date</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+        </table>
+        <label id="2129"/>
+    </body>
+</report>
