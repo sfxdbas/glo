@@ -1,4 +1,4 @@
---create table extract_dump_sept_MIS_05102021 as 
+/*---create table extract_dump_sept_MIS_05102021 as */
  with extract_dump as (
  select bsl.activationstatusenum ,bsl.msisdn_compliance_status ,bsl.msisdn as msisdn, bd.firstname,bd.surname as lastname, 
  to_char(bd.birthday, 'DD/MM/YYYY') as dateofbirth, er.name as netbookid,
