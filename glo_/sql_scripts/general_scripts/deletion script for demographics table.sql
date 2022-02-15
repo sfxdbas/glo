@@ -8,7 +8,7 @@ from bfp_sync_log bsl
 join user_id ui using (unique_id)
 join basic_data bd on bd.user_id_fk = ui.id
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and bd.id = wi.basic_data_fk 
 )
@@ -25,7 +25,7 @@ from bfp_sync_log bsl
 join user_id ui using (unique_id)
 join basic_data bd on bd.user_id_fk = ui.id
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and bd.id = sd.basic_data_fk 
 )
@@ -42,7 +42,7 @@ from bfp_sync_log bsl
 join user_id ui using (unique_id)
 join basic_data bd on bd.user_id_fk = ui.id
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and bd.id = p.basic_data_fk 
 )
@@ -61,7 +61,7 @@ join basic_data bd on bd.user_id_fk = ui.id
 join sms_activation_request sar on sar.unique_id = bsl.unique_id 
 where bsl.bfpsyncstatusenum = 'SUCCESS'
 and sar.phone_number = bsl.msisdn 
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and pns.id = sar.phone_number_status_fk 
 )
@@ -73,7 +73,7 @@ and pns.id = sar.phone_number_status_fk
 -->
 select *
 from sms_activation_request sar  
-where phone_number = '08055533333'
+where phone_number = 'insert_here'
 and date(sar.receipt_timestamp)>'2015-08-04'
 ;
 
@@ -88,7 +88,7 @@ from bfp_sync_log bsl
 join user_id ui using (unique_id)
 join basic_data bd on bd.user_id_fk = ui.id
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and bd.id = md.basic_data_fk 
 )
@@ -105,7 +105,7 @@ from bfp_sync_log bsl
 join user_id ui using (unique_id)
 join basic_data bd on bd.user_id_fk = ui.id
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and bd.id = md.basic_data_fk 
 )
@@ -122,7 +122,7 @@ from bfp_sync_log bsl
 join user_id ui using (unique_id)
 join basic_data bd on bd.user_id_fk = ui.id
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and bd.id = el.basic_data_fk 
 )
@@ -140,7 +140,7 @@ from bfp_sync_log bsl
 join user_id ui using (unique_id)
 join basic_data bd on bd.user_id_fk = ui.id
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and bd.id = dd.basic_data_fk 
 )
@@ -156,7 +156,7 @@ where exists
 from bfp_sync_log bsl 
 join user_id ui using (unique_id)
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and bd.user_id_fk = ui.id 
 )
@@ -171,7 +171,7 @@ where exists
 (select 1 
 from bfp_sync_log bsl 
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04'
 and ui.unique_id = bsl.unique_id 
 )
@@ -183,7 +183,7 @@ and ui.unique_id = bsl.unique_id
 select *
 from  bfp_sync_log bsl 
 where bsl.bfpsyncstatusenum = 'SUCCESS'
-and bsl.msisdn = '08055533333'
+and bsl.msisdn = 'insert_here'
 and date(create_date)>'2015-08-04' 
 ;
 
