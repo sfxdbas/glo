@@ -104,6 +104,14 @@ RENAME TO msisdn_provision_status_old_03022022;
 ALTER TABLE public.msisdn_provision_status_new 
 RENAME TO msisdn_provision_status;
 
+
+ALTER TABLE public.msisdn_provision_status_log
+RENAME TO msisdn_provision_status_log_old_03022022;
+
+
+ALTER TABLE public.msisdn_provision_status_log_new
+RENAME TO msisdn_provision_status_log;
+
 --6. (issues might be experienced in this step) == (or we skip this step and move to step 8)
 ALTER TABLE public.msisdn_provision_status_log ADD CONSTRAINT msisdn_provision_status_log_fk
 FOREIGN KEY (msisdn_provision_status_fk) REFERENCES msisdn_provision_status(pk);
