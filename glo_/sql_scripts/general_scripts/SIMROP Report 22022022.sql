@@ -109,7 +109,7 @@ where dss.setting_name in
 select kd."name" as partner, ku.nin 
 from kyc_dealer kd
 join km_user ku on lower(kd.email_address) = lower(ku.email_address)
-where nin is not null 
+where ku.nin is not null 
 ;
 
 --All users on SIMROP with their NIN
