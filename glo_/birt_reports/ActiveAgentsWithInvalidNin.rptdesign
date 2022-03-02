@@ -38,7 +38,7 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">org.postgresql.Driver</property>
-            <property name="odaURL">jdbc:postgresql://10.152.89.177:5445/biocapture</property>
+            <property name="odaURL">jdbc:postgresql://10.152.89.222:9999/biocapture</property>
             <property name="odaUser">bmanager</property>
             <encrypted-property name="odaPassword" encryptionID="base64">YjNtQTdAI2czUl8xeUwy</encrypted-property>
         </oda-data-source>
@@ -50,33 +50,39 @@
                     <property name="columnName">first_name</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">first_name</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">first_name</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">surname</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">surname</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">surname</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">email_address</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">email_address</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">email_address</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">phone_number</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">phone_number</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">phone_number</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">nin</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">nin</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">nin</text-property>
                 </structure>
             </list-property>
+            <list-property name="parameters"/>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
                     <structure>
@@ -149,7 +155,9 @@
 select ku.first_name, ku.surname,ku.email_address, ku.mobile as phone_number, ku.nin 
 from km_user ku 
 where nin is not null 
-and active is true
+and active is true 
+and nin != ''
+and lower(ku.email_address) not like '%seamfix%'
 and not exists 
 (select 1 from nimc_verification_log nvl where nvl.nin = ku.nin)
 ;]]></xml-property>

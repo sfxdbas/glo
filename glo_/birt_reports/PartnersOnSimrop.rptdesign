@@ -38,7 +38,7 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">org.postgresql.Driver</property>
-            <property name="odaURL">jdbc:postgresql://10.152.89.177:5445/biocapture</property>
+            <property name="odaURL">jdbc:postgresql://10.152.89.222:9999/biocapture</property>
             <property name="odaUser">bmanager</property>
             <encrypted-property name="odaPassword" encryptionID="base64">YjNtQTdAI2czUl8xeUwy</encrypted-property>
         </oda-data-source>

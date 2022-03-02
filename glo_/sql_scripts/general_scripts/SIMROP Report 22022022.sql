@@ -84,10 +84,14 @@ order by date(bsl.create_date)
 select ku.first_name, ku.surname,ku.email_address, ku.mobile as phone_number, ku.nin 
 from km_user ku 
 where nin is not null 
-and active is true
+and active is true 
+and nin != ''
+and lower(ku.email_address) not like '%seamfix%'
 and not exists 
 (select 1 from nimc_verification_log nvl where nvl.nin = ku.nin)
 ;
+
+
 
 --All whitelisted devices
 --
