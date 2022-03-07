@@ -52,6 +52,24 @@
                     <text-property name="displayName">device</text-property>
                     <text-property name="heading">device</text-property>
                 </structure>
+                <structure>
+                    <property name="columnName">dealer</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">dealer</text-property>
+                    <text-property name="heading">dealer</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">dealer_code</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">dealer_code</text-property>
+                    <text-property name="heading">dealer_code</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">datewhitelisted</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">datewhitelisted</text-property>
+                    <text-property name="heading">datewhitelisted</text-property>
+                </structure>
             </list-property>
             <list-property name="parameters"/>
             <structure name="cachedMetaData">
@@ -60,6 +78,21 @@
                         <property name="position">1</property>
                         <property name="name">device</property>
                         <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">dealer</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">dealer_code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">datewhitelisted</property>
+                        <property name="dataType">date-time</property>
                     </structure>
                 </list-property>
             </structure>
@@ -72,12 +105,37 @@
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">dealer</property>
+                    <property name="nativeName">dealer</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">dealer_code</property>
+                    <property name="nativeName">dealer_code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">datewhitelisted</property>
+                    <property name="nativeName">datewhitelisted</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[--All whitelisted devices
 --
-select distinct er.code as device
+select distinct on (er.code) er.code as device, kd."name" as dealer, kd.deal_code as dealer_code,
+dss.last_modified as datewhitelisted
 from device_specific_setting dss 
 join enrollment_ref er on DSS.enrollment_ref_fk = er.id 
+join node n on n.enrollment_ref = er.id 
+join node_assignment na on na.node_fk = n.id 
+join kyc_dealer kd on kd.pk = na.kyc_dealer_fk 
 where dss.setting_name in 
 (
 'PILOT-AVAILABLE-USE-CASE',
@@ -86,6 +144,7 @@ where dss.setting_name in
 'IMPROVED_NIN_VERIFICATION_USE_CASES',
 'PILOT-NIN-VERIFICATION-TYPES'
 )
+order by er.code, dss.last_modified desc 
 ;]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
@@ -342,10 +401,31 @@ where dss.setting_name in
                     </list-property>
                     <property name="allowExport">true</property>
                 </structure>
+                <structure>
+                    <property name="name">dealer</property>
+                    <text-property name="displayName">dealer</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dealer"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">dealer_code</property>
+                    <text-property name="displayName">dealer_code</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["dealer_code"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">datewhitelisted</property>
+                    <text-property name="displayName">datewhitelisted</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["datewhitelisted"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">0</property>
             <column id="2674"/>
             <column id="2670"/>
+            <column id="2680"/>
+            <column id="2688"/>
+            <column id="2684"/>
             <header>
                 <row id="2662">
                     <property name="backgroundColor">#008400</property>
@@ -374,7 +454,46 @@ where dss.setting_name in
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="2664">
-                            <text-property name="text">Device</text-property>
+                            <text-property name="text">Device Tag</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2677">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2689">
+                            <text-property name="text">Dealer Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2685">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2690">
+                            <text-property name="text">Dealer Code</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2681">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2691">
+                            <text-property name="text">Date Whitelisted</text-property>
                         </label>
                     </cell>
                 </row>
@@ -407,6 +526,45 @@ where dss.setting_name in
                             <property name="resultSetColumn">device</property>
                         </data>
                     </cell>
+                    <cell id="2678">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2692">
+                            <property name="resultSetColumn">dealer</property>
+                        </data>
+                    </cell>
+                    <cell id="2686">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2693">
+                            <property name="resultSetColumn">dealer_code</property>
+                        </data>
+                    </cell>
+                    <cell id="2682">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2694">
+                            <property name="resultSetColumn">datewhitelisted</property>
+                        </data>
+                    </cell>
                 </row>
             </detail>
             <footer>
@@ -422,6 +580,36 @@ where dss.setting_name in
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="2669">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2679">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2687">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2683">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

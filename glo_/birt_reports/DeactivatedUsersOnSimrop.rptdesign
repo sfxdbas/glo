@@ -1,44 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
-    <text-property name="title">Registrations By Region</text-property>
+    <text-property name="title">Deactivated Users On SIMROP</text-property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">auto layout</property>
-    <parameters>
-        <scalar-parameter name="StartDate" id="2365">
-            <property name="valueType">static</property>
-            <property name="isRequired">true</property>
-            <property name="dataType">date</property>
-            <property name="distinct">true</property>
-            <simple-property-list name="defaultValue">
-                <value type="javascript">new Date()</value>
-            </simple-property-list>
-            <list-property name="selectionList"/>
-            <property name="paramType">simple</property>
-            <property name="concealValue">false</property>
-            <property name="controlType">text-box</property>
-            <structure name="format">
-                <property name="category">Unformatted</property>
-            </structure>
-        </scalar-parameter>
-        <scalar-parameter name="endDate" id="2366">
-            <property name="valueType">static</property>
-            <property name="isRequired">true</property>
-            <property name="dataType">date</property>
-            <property name="distinct">true</property>
-            <simple-property-list name="defaultValue">
-                <value type="javascript">new Date()</value>
-            </simple-property-list>
-            <list-property name="selectionList"/>
-            <property name="paramType">simple</property>
-            <property name="concealValue">false</property>
-            <property name="controlType">text-box</property>
-            <structure name="format">
-                <property name="category">Unformatted</property>
-            </structure>
-        </scalar-parameter>
-    </parameters>
     <data-sources>
         <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="6">
             <list-property name="privateDriverProperties">
@@ -64,70 +30,77 @@
         </oda-data-source>
     </data-sources>
     <data-sets>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="registrations_by_region" id="2535">
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="deactivated_users" id="2695">
             <list-property name="columnHints">
                 <structure>
-                    <property name="columnName">date</property>
+                    <property name="columnName">first_name</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">date</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">date</text-property>
+                    <text-property name="displayName">first_name</text-property>
+                    <text-property name="heading">first_name</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">region</property>
+                    <property name="columnName">surname</property>
                     <property name="analysis">dimension</property>
-                    <text-property name="displayName">region</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">region</text-property>
+                    <text-property name="displayName">surname</text-property>
+                    <text-property name="heading">surname</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">count</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">count</text-property>
-                    <property name="onColumnLayout">false</property>
-                    <text-property name="heading">count</text-property>
+                    <property name="columnName">email_address</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">email_address</text-property>
+                    <text-property name="heading">email_address</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">date_deactivated</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">date_deactivated</text-property>
+                    <text-property name="heading">date_deactivated</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">operation_performed</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">operation_performed</text-property>
+                    <text-property name="heading">operation_performed</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">reason</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">reason</text-property>
+                    <text-property name="heading">reason</text-property>
                 </structure>
             </list-property>
-            <list-property name="parameters">
-                <structure>
-                    <property name="name">param_1</property>
-                    <property name="paramName">StartDate</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">date</property>
-                    <property name="nativeDataType">91</property>
-                    <property name="position">1</property>
-                    <property name="isOptional">false</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-                <structure>
-                    <property name="name">param_2</property>
-                    <property name="paramName">endDate</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">date</property>
-                    <property name="nativeDataType">91</property>
-                    <property name="position">2</property>
-                    <property name="isOptional">false</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-            </list-property>
+            <list-property name="parameters"/>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
                     <structure>
                         <property name="position">1</property>
-                        <property name="name">date</property>
-                        <property name="dataType">date</property>
+                        <property name="name">first_name</property>
+                        <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">2</property>
-                        <property name="name">region</property>
+                        <property name="name">surname</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
                         <property name="position">3</property>
-                        <property name="name">count</property>
-                        <property name="dataType">decimal</property>
+                        <property name="name">email_address</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">date_deactivated</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">operation_performed</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">reason</property>
+                        <property name="dataType">string</property>
                     </structure>
                 </list-property>
             </structure>
@@ -135,115 +108,121 @@
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
-                    <property name="name">date</property>
-                    <property name="nativeName">date</property>
-                    <property name="dataType">date</property>
-                    <property name="nativeDataType">91</property>
+                    <property name="name">first_name</property>
+                    <property name="nativeName">first_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
-                    <property name="name">region</property>
-                    <property name="nativeName">region</property>
+                    <property name="name">surname</property>
+                    <property name="nativeName">surname</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">3</property>
-                    <property name="name">count</property>
-                    <property name="nativeName">count</property>
-                    <property name="dataType">decimal</property>
-                    <property name="nativeDataType">-5</property>
+                    <property name="name">email_address</property>
+                    <property name="nativeName">email_address</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">date_deactivated</property>
+                    <property name="nativeName">date_deactivated</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">operation_performed</property>
+                    <property name="nativeName">operation_performed</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">reason</property>
+                    <property name="nativeName">reason</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[--All REGISTRATIONS by each dealer within specified period (Dealer wise Registrations)
---
-select date(bsl.create_date), 
-case when z."name" is null then 'NA' else z."name" end as region, count(distinct msisdn)
-from bfp_sync_log bsl 
-join enrollment_ref er on er.id = bsl.enrollment_ref_fk 
-join node n on n.enrollment_ref = er.id 
-join node_assignment na on na.node_fk = n.id 
-left join zone z on z.id = na.zone_fk 
-where bfpsyncstatusenum = 'SUCCESS'
-and date(bsl.create_date) between ? and ?
-group by date(bsl.create_date), z."name" 
--- order by date(bsl.create_date)
-;]]></xml-property>
+            <xml-property name="queryText"><![CDATA[-- Deactivated users
+select ku.first_name, ku.surname, ku.email_address, 
+kuh.create_date as date_deactivated
+,kuh.operation_performed, kuh.reason 
+from km_user ku 
+join km_user_history_ kuh on ku.pk = kuh.km_user_fk 
+where initcap(operation_performed) = 'Deactivation' 
+-- order by kuh.create_date desc  
+;
+]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>1</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>2</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
         <design:resultColumnDefinitions>
           <design:attributes>
             <design:identifier>
-              <design:name>date</design:name>
+              <design:name>first_name</design:name>
               <design:position>1</design:position>
             </design:identifier>
-            <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
-            <design:precision>13</design:precision>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>128</design:precision>
             <design:scale>0</design:scale>
-            <design:nullability>Unknown</design:nullability>
+            <design:nullability>Nullable</design:nullability>
             <design:uiHints>
-              <design:displayName>date</design:displayName>
+              <design:displayName>first_name</design:displayName>
             </design:uiHints>
           </design:attributes>
           <design:usageHints>
-            <design:label>date</design:label>
+            <design:label>first_name</design:label>
             <design:formattingHints>
-              <design:displaySize>13</design:displaySize>
+              <design:displaySize>128</design:displaySize>
             </design:formattingHints>
           </design:usageHints>
         </design:resultColumnDefinitions>
         <design:resultColumnDefinitions>
           <design:attributes>
             <design:identifier>
-              <design:name>device</design:name>
+              <design:name>surname</design:name>
               <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>128</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>surname</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>surname</design:label>
+            <design:formattingHints>
+              <design:displaySize>128</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>email_address</design:name>
+              <design:position>3</design:position>
             </design:identifier>
             <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
             <design:precision>255</design:precision>
             <design:scale>0</design:scale>
-            <design:nullability>Nullable</design:nullability>
+            <design:nullability>NotNullable</design:nullability>
             <design:uiHints>
-              <design:displayName>device</design:displayName>
+              <design:displayName>email_address</design:displayName>
             </design:uiHints>
           </design:attributes>
           <design:usageHints>
-            <design:label>device</design:label>
+            <design:label>email_address</design:label>
             <design:formattingHints>
               <design:displaySize>255</design:displaySize>
             </design:formattingHints>
@@ -252,267 +231,63 @@ group by date(bsl.create_date), z."name"
         <design:resultColumnDefinitions>
           <design:attributes>
             <design:identifier>
-              <design:name>count</design:name>
-              <design:position>3</design:position>
+              <design:name>create_date</design:name>
+              <design:position>4</design:position>
             </design:identifier>
-            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
-            <design:precision>19</design:precision>
-            <design:scale>0</design:scale>
-            <design:nullability>Unknown</design:nullability>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>29</design:precision>
+            <design:scale>6</design:scale>
+            <design:nullability>NotNullable</design:nullability>
             <design:uiHints>
-              <design:displayName>count</design:displayName>
+              <design:displayName>create_date</design:displayName>
             </design:uiHints>
           </design:attributes>
           <design:usageHints>
-            <design:label>count</design:label>
+            <design:label>create_date</design:label>
             <design:formattingHints>
-              <design:displaySize>20</design:displaySize>
+              <design:displaySize>29</design:displaySize>
             </design:formattingHints>
           </design:usageHints>
         </design:resultColumnDefinitions>
-      </design:resultSetColumns>
-      <design:criteria/>
-    </design:resultSetDefinitions>
-  </design:ResultSets>
-</model:DesignValues>]]></xml-property>
-        </oda-data-set>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="date" id="2620">
-            <list-property name="columnHints">
-                <structure>
-                    <property name="columnName">date_</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">date_</text-property>
-                    <text-property name="heading">date_</text-property>
-                </structure>
-            </list-property>
-            <list-property name="parameters">
-                <structure>
-                    <property name="name">param_1</property>
-                    <property name="paramName">StartDate</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">date</property>
-                    <property name="nativeDataType">12</property>
-                    <property name="position">1</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-                <structure>
-                    <property name="name">param_2</property>
-                    <property name="paramName">endDate</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">date</property>
-                    <property name="nativeDataType">12</property>
-                    <property name="position">2</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-            </list-property>
-            <structure name="cachedMetaData">
-                <list-property name="resultSet">
-                    <structure>
-                        <property name="position">1</property>
-                        <property name="name">date_</property>
-                        <property name="dataType">string</property>
-                    </structure>
-                </list-property>
-            </structure>
-            <property name="dataSource">Data Source</property>
-            <list-property name="resultSet">
-                <structure>
-                    <property name="position">1</property>
-                    <property name="name">date_</property>
-                    <property name="nativeName">date_</property>
-                    <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
-                </structure>
-            </list-property>
-            <xml-property name="queryText"><![CDATA[select ? || ' to ' || ? as date_]]></xml-property>
-            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
-  <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>1</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>2</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
-  <design:ResultSets derivedMetaData="true">
-    <design:resultSetDefinitions>
-      <design:resultSetColumns>
         <design:resultColumnDefinitions>
           <design:attributes>
             <design:identifier>
-              <design:name>date_</design:name>
-              <design:position>1</design:position>
+              <design:name>operation_performed</design:name>
+              <design:position>5</design:position>
             </design:identifier>
             <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
-            <design:precision>2147483647</design:precision>
+            <design:precision>255</design:precision>
             <design:scale>0</design:scale>
-            <design:nullability>Unknown</design:nullability>
+            <design:nullability>Nullable</design:nullability>
             <design:uiHints>
-              <design:displayName>date_</design:displayName>
+              <design:displayName>operation_performed</design:displayName>
             </design:uiHints>
           </design:attributes>
           <design:usageHints>
-            <design:label>date_</design:label>
+            <design:label>operation_performed</design:label>
             <design:formattingHints>
-              <design:displaySize>2147483647</design:displaySize>
+              <design:displaySize>255</design:displaySize>
             </design:formattingHints>
           </design:usageHints>
         </design:resultColumnDefinitions>
-      </design:resultSetColumns>
-      <design:criteria/>
-    </design:resultSetDefinitions>
-  </design:ResultSets>
-</model:DesignValues>]]></xml-property>
-        </oda-data-set>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="cumm_total" id="2631">
-            <list-property name="columnHints">
-                <structure>
-                    <property name="columnName">total</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">total</text-property>
-                    <text-property name="heading">total</text-property>
-                </structure>
-            </list-property>
-            <list-property name="parameters">
-                <structure>
-                    <property name="name">param_1</property>
-                    <property name="paramName">StartDate</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">date</property>
-                    <property name="nativeDataType">91</property>
-                    <property name="position">1</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-                <structure>
-                    <property name="name">param_2</property>
-                    <property name="paramName">endDate</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">date</property>
-                    <property name="nativeDataType">91</property>
-                    <property name="position">2</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-            </list-property>
-            <structure name="cachedMetaData">
-                <list-property name="resultSet">
-                    <structure>
-                        <property name="position">1</property>
-                        <property name="name">total</property>
-                        <property name="dataType">decimal</property>
-                    </structure>
-                </list-property>
-            </structure>
-            <property name="dataSource">Data Source</property>
-            <list-property name="resultSet">
-                <structure>
-                    <property name="position">1</property>
-                    <property name="name">total</property>
-                    <property name="nativeName">total</property>
-                    <property name="dataType">decimal</property>
-                    <property name="nativeDataType">2</property>
-                </structure>
-            </list-property>
-            <xml-property name="queryText"><![CDATA[--All REGISTRATIONS by each dealer within specified period (Dealer wise Registrations)
---
-select sum(count ) total from (
-select date(bsl.create_date), case when z."name" is null then 'NA' else z."name" end as region, count(distinct msisdn)
-from bfp_sync_log bsl 
-join enrollment_ref er on er.id = bsl.enrollment_ref_fk 
-join node n on n.enrollment_ref = er.id 
-join node_assignment na on na.node_fk = n.id 
-left join zone z on z.id = na.zone_fk 
-where bfpsyncstatusenum = 'SUCCESS'
-and date(bsl.create_date) between ? and ?
-group by date(bsl.create_date), z."name" 
---order by date(bsl.create_date)
-)
-;]]></xml-property>
-            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
-  <Version>2.0</Version>
-  <DataSetParameters>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>1</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>2</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-  </DataSetParameters>
-  <design:ResultSets derivedMetaData="true">
-    <design:resultSetDefinitions>
-      <design:resultSetColumns>
         <design:resultColumnDefinitions>
           <design:attributes>
             <design:identifier>
-              <design:name>total</design:name>
-              <design:position>1</design:position>
+              <design:name>reason</design:name>
+              <design:position>6</design:position>
             </design:identifier>
-            <design:nativeDataTypeCode>2</design:nativeDataTypeCode>
-            <design:precision>0</design:precision>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
             <design:scale>0</design:scale>
-            <design:nullability>Unknown</design:nullability>
+            <design:nullability>Nullable</design:nullability>
             <design:uiHints>
-              <design:displayName>total</design:displayName>
+              <design:displayName>reason</design:displayName>
             </design:uiHints>
           </design:attributes>
           <design:usageHints>
-            <design:label>total</design:label>
+            <design:label>reason</design:label>
             <design:formattingHints>
-              <design:displaySize>131089</design:displaySize>
+              <design:displaySize>255</design:displaySize>
             </design:formattingHints>
           </design:usageHints>
         </design:resultColumnDefinitions>
@@ -630,139 +405,53 @@ group by date(bsl.create_date), z."name"
             <property name="source">embed</property>
             <property name="imageName">shot_1300083951.jpg</property>
         </image>
-        <table id="2621">
-            <property name="fontSize">12pt</property>
-            <property name="fontWeight">bold</property>
-            <property name="textAlign">center</property>
-            <property name="dataSet">date</property>
-            <list-property name="boundDataColumns">
-                <structure>
-                    <property name="name">date_</property>
-                    <text-property name="displayName">date_</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["date_"]</expression>
-                    <property name="dataType">string</property>
-                </structure>
-            </list-property>
-            <column id="2630"/>
-            <detail>
-                <row id="2625">
-                    <cell id="2626">
-                        <data id="2627">
-                            <property name="resultSetColumn">date_</property>
-                        </data>
-                    </cell>
-                </row>
-            </detail>
-            <footer>
-                <row id="2628">
-                    <cell id="2629"/>
-                </row>
-            </footer>
-        </table>
         <label id="1828">
             <property name="fontFamily">serif</property>
             <property name="fontSize">16pt</property>
             <property name="fontWeight">bold</property>
             <property name="textAlign">center</property>
-            <text-property name="text">Registrations By Region</text-property>
+            <text-property name="text">Deactivated Users On SIMROP</text-property>
         </label>
         <label id="2341"/>
-        <table id="2645">
-            <property name="fontWeight">bold</property>
-            <property name="color">#000000</property>
-            <property name="textAlign">center</property>
-            <property name="verticalAlign">top</property>
-            <property name="display">block</property>
-            <column id="2655"/>
-            <column id="2652"/>
-            <header>
-                <row id="2646">
-                    <cell id="2653">
-                        <label id="2657"/>
-                    </cell>
-                    <cell id="2647">
-                        <label id="2658"/>
-                    </cell>
-                </row>
-            </header>
-            <detail>
-                <row id="2648">
-                    <cell id="2654">
-                        <label id="2656"/>
-                    </cell>
-                    <cell id="2649">
-                        <grid id="2632">
-                            <property name="fontSize">24pt</property>
-                            <property name="fontWeight">bold</property>
-                            <property name="textAlign">right</property>
-                            <property name="verticalAlign">middle</property>
-                            <property name="display">inline</property>
-                            <column id="2643"/>
-                            <column id="2633"/>
-                            <row id="2634">
-                                <property name="textAlign">center</property>
-                                <cell id="2642">
-                                    <property name="borderBottomStyle">solid</property>
-                                    <property name="borderBottomWidth">thin</property>
-                                    <property name="borderLeftStyle">solid</property>
-                                    <property name="borderLeftWidth">thin</property>
-                                    <property name="borderRightStyle">solid</property>
-                                    <property name="borderRightWidth">thin</property>
-                                    <property name="borderTopStyle">solid</property>
-                                    <property name="borderTopWidth">thin</property>
-                                    <label id="2644">
-                                        <text-property name="text">        Total</text-property>
-                                    </label>
-                                </cell>
-                                <cell id="2635">
-                                    <property name="borderBottomStyle">solid</property>
-                                    <property name="borderBottomWidth">thin</property>
-                                    <property name="borderLeftStyle">solid</property>
-                                    <property name="borderLeftWidth">thin</property>
-                                    <property name="borderRightStyle">solid</property>
-                                    <property name="borderRightWidth">thin</property>
-                                    <property name="borderTopStyle">solid</property>
-                                    <property name="borderTopWidth">thin</property>
-                                    <data id="2636">
-                                        <property name="dataSet">cumm_total</property>
-                                        <list-property name="boundDataColumns">
-                                            <structure>
-                                                <property name="name">total</property>
-                                                <text-property name="displayName">total</text-property>
-                                                <expression name="expression" type="javascript">dataSetRow["total"]</expression>
-                                                <property name="dataType">decimal</property>
-                                            </structure>
-                                        </list-property>
-                                        <property name="resultSetColumn">total</property>
-                                    </data>
-                                </cell>
-                            </row>
-                        </grid>
-                    </cell>
-                </row>
-            </detail>
-        </table>
         <label id="2449"/>
-        <table id="2592">
-            <property name="dataSet">registrations_by_region</property>
+        <table id="2696">
+            <property name="dataSet">deactivated_users</property>
             <list-property name="boundDataColumns">
                 <structure>
-                    <property name="name">date</property>
-                    <text-property name="displayName">date</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["date"]</expression>
-                    <property name="dataType">date</property>
-                </structure>
-                <structure>
-                    <property name="name">region</property>
-                    <text-property name="displayName">region</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["region"]</expression>
+                    <property name="name">first_name</property>
+                    <text-property name="displayName">first_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["first_name"]</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">count</property>
-                    <text-property name="displayName">count</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["count"]</expression>
-                    <property name="dataType">decimal</property>
+                    <property name="name">surname</property>
+                    <text-property name="displayName">surname</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["surname"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">email_address</property>
+                    <text-property name="displayName">email_address</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["email_address"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">date_deactivated</property>
+                    <text-property name="displayName">date_deactivated</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["date_deactivated"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">operation_performed</property>
+                    <text-property name="displayName">operation_performed</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["operation_performed"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">reason</property>
+                    <text-property name="displayName">reason</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["reason"]</expression>
+                    <property name="dataType">string</property>
                 </structure>
                 <structure>
                     <property name="name">Aggregation</property>
@@ -771,23 +460,34 @@ group by date(bsl.create_date), z."name"
                     <list-property name="arguments">
                         <structure>
                             <property name="name">Expression</property>
-                            <expression name="value" type="javascript">row["region"]</expression>
+                            <expression name="value" type="javascript">row["first_name"]</expression>
                         </structure>
                     </list-property>
                     <property name="allowExport">true</property>
                 </structure>
             </list-property>
             <property name="pageBreakInterval">0</property>
-            <column id="2617"/>
-            <column id="2611"/>
-            <column id="2612"/>
-            <column id="2613"/>
+            <list-property name="sort">
+                <structure>
+                    <expression name="key" type="javascript">row["date_deactivated"]</expression>
+                    <property name="direction">desc</property>
+                    <property name="strength">-1</property>
+                </structure>
+            </list-property>
+            <column id="2739"/>
+            <column id="2730"/>
+            <column id="2731"/>
+            <column id="2732"/>
+            <column id="2734"/>
+            <column id="2735"/>
+            <column id="2746"/>
             <header>
-                <row id="2593">
+                <row id="2697">
                     <property name="backgroundColor">#008400</property>
+                    <property name="fontSize">12pt</property>
                     <property name="fontWeight">bold</property>
                     <property name="color">#FFFFFF</property>
-                    <cell id="2614">
+                    <cell id="2736">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -796,11 +496,11 @@ group by date(bsl.create_date), z."name"
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="2618">
+                        <label id="2740">
                             <text-property name="text">SN</text-property>
                         </label>
                     </cell>
-                    <cell id="2594">
+                    <cell id="2698">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -809,11 +509,11 @@ group by date(bsl.create_date), z."name"
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="2595">
-                            <text-property name="text">Date</text-property>
+                        <label id="2699">
+                            <text-property name="text">First Name</text-property>
                         </label>
                     </cell>
-                    <cell id="2596">
+                    <cell id="2700">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -822,11 +522,11 @@ group by date(bsl.create_date), z."name"
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="2597">
-                            <text-property name="text">Region</text-property>
+                        <label id="2701">
+                            <text-property name="text">Surname</text-property>
                         </label>
                     </cell>
-                    <cell id="2598">
+                    <cell id="2702">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -835,15 +535,54 @@ group by date(bsl.create_date), z."name"
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <label id="2599">
-                            <text-property name="text">Total</text-property>
+                        <label id="2703">
+                            <text-property name="text">Email</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2706">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2707">
+                            <text-property name="text">Operation Performed</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2708">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2709">
+                            <text-property name="text">Reason</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2743">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2747">
+                            <text-property name="text">Date Deactivated</text-property>
                         </label>
                     </cell>
                 </row>
             </header>
             <detail>
-                <row id="2600">
-                    <cell id="2615">
+                <row id="2710">
+                    <cell id="2737">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -852,11 +591,11 @@ group by date(bsl.create_date), z."name"
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="2619">
+                        <data id="2742">
                             <property name="resultSetColumn">Aggregation</property>
                         </data>
                     </cell>
-                    <cell id="2601">
+                    <cell id="2711">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -865,11 +604,11 @@ group by date(bsl.create_date), z."name"
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="2602">
-                            <property name="resultSetColumn">date</property>
+                        <data id="2712">
+                            <property name="resultSetColumn">first_name</property>
                         </data>
                     </cell>
-                    <cell id="2603">
+                    <cell id="2713">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -878,11 +617,11 @@ group by date(bsl.create_date), z."name"
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="2604">
-                            <property name="resultSetColumn">region</property>
+                        <data id="2714">
+                            <property name="resultSetColumn">surname</property>
                         </data>
                     </cell>
-                    <cell id="2605">
+                    <cell id="2715">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -891,15 +630,54 @@ group by date(bsl.create_date), z."name"
                         <property name="borderRightWidth">thin</property>
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
-                        <data id="2606">
-                            <property name="resultSetColumn">count</property>
+                        <data id="2716">
+                            <property name="resultSetColumn">email_address</property>
+                        </data>
+                    </cell>
+                    <cell id="2719">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2720">
+                            <property name="resultSetColumn">operation_performed</property>
+                        </data>
+                    </cell>
+                    <cell id="2721">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2722">
+                            <property name="resultSetColumn">reason</property>
+                        </data>
+                    </cell>
+                    <cell id="2744">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2748">
+                            <property name="resultSetColumn">date_deactivated</property>
                         </data>
                     </cell>
                 </row>
             </detail>
             <footer>
-                <row id="2607">
-                    <cell id="2616">
+                <row id="2723">
+                    <cell id="2738">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -909,7 +687,7 @@ group by date(bsl.create_date), z."name"
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-                    <cell id="2608">
+                    <cell id="2724">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -919,7 +697,7 @@ group by date(bsl.create_date), z."name"
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-                    <cell id="2609">
+                    <cell id="2725">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
@@ -929,7 +707,37 @@ group by date(bsl.create_date), z."name"
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                     </cell>
-                    <cell id="2610">
+                    <cell id="2726">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2728">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2729">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2745">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

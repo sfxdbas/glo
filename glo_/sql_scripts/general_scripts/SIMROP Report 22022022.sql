@@ -125,3 +125,9 @@ where nin is not null
 
 --All users mapped for SWAP. E.g Glozone
 
+-- Deactivated users
+select * from km_user_history_ kuh where /*km_user_fk = 325423036 and */operation_performed = 'Deactivation' order by 3 desc  ;
+
+select * from km_user ku where email_address = 'cchhuukkzz@seamfix.com'
+
+-- Blacklisted Devices
