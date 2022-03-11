@@ -112,6 +112,12 @@
                     <text-property name="displayName">channel</text-property>
                     <text-property name="heading">channel</text-property>
                 </structure>
+                <structure>
+                    <property name="columnName">status</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">status</text-property>
+                    <text-property name="heading">status</text-property>
+                </structure>
             </list-property>
             <list-property name="parameters"/>
             <structure name="cachedMetaData">
@@ -169,6 +175,11 @@
                     <structure>
                         <property name="position">11</property>
                         <property name="name">channel</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">status</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -252,6 +263,13 @@
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">status</property>
+                    <property name="nativeName">status</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[--All Partners created on SIMROP with their NIN
 --
@@ -260,6 +278,7 @@ case when ku.nin is null then 'NA' else ku.nin end as nin
 ,ku.mobile as mobile_no, ku.email_address,kd.address,
 case when z."name" is null then 'NA' else z."name" end as region, 
 case when s."name" is null then 'NA' else s."name" end as state, dt."name" as channel
+,case when ku.active is true then 'ACTIVE' else 'INACTIVE' end status
 from kyc_dealer kd
 join km_user ku on lower(kd.email_address) = lower(ku.email_address)
 join dealer_type dt on dt.pk = kd.dealer_type_fk 
@@ -582,6 +601,12 @@ left join state s on s.zone_fk = kd.zone_fk
                     <expression name="expression" type="javascript">dataSetRow["channel"]</expression>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="name">status</property>
+                    <text-property name="displayName">status</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">0</property>
             <list-property name="sort">
@@ -603,6 +628,7 @@ left join state s on s.zone_fk = kd.zone_fk
             <column id="2722"/>
             <column id="2718"/>
             <column id="2692"/>
+            <column id="2759"/>
             <header>
                 <row id="2678">
                     <property name="backgroundColor">#008400</property>
@@ -765,6 +791,19 @@ left join state s on s.zone_fk = kd.zone_fk
                             <text-property name="text">Channel</text-property>
                         </label>
                     </cell>
+                    <cell id="2756">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2760">
+                            <text-property name="text">Status</text-property>
+                        </label>
+                    </cell>
                 </row>
             </header>
             <detail>
@@ -925,6 +964,19 @@ left join state s on s.zone_fk = kd.zone_fk
                             <property name="resultSetColumn">channel</property>
                         </data>
                     </cell>
+                    <cell id="2757">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2761">
+                            <property name="resultSetColumn">status</property>
+                        </data>
+                    </cell>
                 </row>
             </detail>
             <footer>
@@ -1040,6 +1092,16 @@ left join state s on s.zone_fk = kd.zone_fk
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="2690">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2758">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

@@ -62,7 +62,20 @@
                     <text-property name="displayName">nin</text-property>
                     <text-property name="heading">nin</text-property>
                 </structure>
+                <structure>
+                    <property name="columnName">roles</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">roles</text-property>
+                    <text-property name="heading">roles</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">status</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">status</text-property>
+                    <text-property name="heading">status</text-property>
+                </structure>
             </list-property>
+            <list-property name="parameters"/>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
                     <structure>
@@ -88,6 +101,16 @@
                     <structure>
                         <property name="position">5</property>
                         <property name="name">nin</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">roles</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">status</property>
                         <property name="dataType">string</property>
                     </structure>
                 </list-property>
@@ -129,12 +152,32 @@
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">roles</property>
+                    <property name="nativeName">roles</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">status</property>
+                    <property name="nativeName">status</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[--All users on SIMROP with their NIN
 --
 select ku.first_name, ku.surname,ku.email_address, ku.mobile as phone_number, ku.nin 
+,string_agg(kr."role",', ') roles,
+case when ku.active is true then 'ACTIVE' else 'INACTIVE' end as status
 from km_user ku 
-where nin is not null 
+join user_role ur on ur.user_fk = ku.pk 
+join km_role kr on ur.role_fk = kr.pk 
+where not exists 
+(select 1 from kyc_dealer kd where kd.email_address=ku.email_address)
+group by ku.first_name, ku.surname,ku.email_address, ku.mobile ,ku.nin,case when ku.active is true then 'ACTIVE' else 'INACTIVE' end 
 ;]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
@@ -415,6 +458,18 @@ where nin is not null
                     </list-property>
                     <property name="allowExport">true</property>
                 </structure>
+                <structure>
+                    <property name="name">roles</property>
+                    <text-property name="displayName">roles</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["roles"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">status</property>
+                    <text-property name="displayName">status</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">0</property>
             <column id="2737"/>
@@ -423,6 +478,8 @@ where nin is not null
             <column id="2731"/>
             <column id="2732"/>
             <column id="2733"/>
+            <column id="2743"/>
+            <column id="2747"/>
             <header>
                 <row id="2701">
                     <property name="backgroundColor">#008400</property>
@@ -507,6 +564,32 @@ where nin is not null
                             <text-property name="text">NIN</text-property>
                         </label>
                     </cell>
+                    <cell id="2740">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2748">
+                            <text-property name="text">Roles</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2744">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2749">
+                            <text-property name="text">Status</text-property>
+                        </label>
+                    </cell>
                 </row>
             </header>
             <detail>
@@ -589,6 +672,32 @@ where nin is not null
                             <property name="resultSetColumn">nin</property>
                         </data>
                     </cell>
+                    <cell id="2741">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2750">
+                            <property name="resultSetColumn">roles</property>
+                        </data>
+                    </cell>
+                    <cell id="2745">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2751">
+                            <property name="resultSetColumn">status</property>
+                        </data>
+                    </cell>
                 </row>
             </detail>
             <footer>
@@ -644,6 +753,26 @@ where nin is not null
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="2728">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2742">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2746">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>

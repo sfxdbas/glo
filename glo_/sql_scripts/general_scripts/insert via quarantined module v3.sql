@@ -8,7 +8,7 @@ er.DEVICE_ID, '10.152.89.182' INSTANCE_IP, '8190' INSTANCE_PORT,qr.dda11 REG_TYP
 'NOT_APPLICABLE' MSISDN_COMPLIANCE_STATUS, '2021-09-22 11:17:50' MSISDN_COMPLIANCE_TIMSETAMP 
 from quarantined_registration qr
 join quarantined_msisdn_detail qmd on qr.pk = qmd.quarantined_reg_fk 
-join enrollment_ref er on ER.code = QR.kit_tag 
+join enrollment_ref er on ER.code = replace(unique_id ,right(unique_id ,14), '') 
 where unique_id in ('GLO-DN-749M-1646406848925','GLO-HH-LAG-ETI-LA1LAVIDEA0177-709X-1646406026464')
 and not exists 
 (select 1 from bfp_sync_log bsl where BSL.unique_id = QR.unique_id)
@@ -126,7 +126,7 @@ from quarantined_registration qr
 join USER_ID UI on UI.unique_id = QR.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
 join km_user ku on ku.pk = qr.km_user_fk 
-join enrollment_ref er on er.code = qr.kit_tag 
+join enrollment_ref er on ER.code = replace(unique_id ,right(unique_id ,14), '') 
 join lga l on upper(l."name") = upper(qr.dda9)
 where qr.unique_id in ('GLO-DN-749M-1646406848925','GLO-HH-LAG-ETI-LA1LAVIDEA0177-709X-1646406026464'
 ) 
@@ -165,7 +165,7 @@ join bfp_sync_log bsl on bsl.unique_id = qr.unique_id
 join USER_ID UI on UI.unique_id = QR.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
 join km_user ku on ku.pk = qr.km_user_fk 
-join enrollment_ref er on er.code = qr.kit_tag 
+join enrollment_ref er on ER.code = replace(unique_id ,right(unique_id ,14), '') 
 join lga l on upper(l."name") = upper(qr.dda9)
 where qr.unique_id in ('GLO-DN-749M-1646406848925','GLO-HH-LAG-ETI-LA1LAVIDEA0177-709X-1646406026464'
 ) and  not exists 
@@ -209,7 +209,7 @@ from quarantined_registration qr
 join USER_ID UI on UI.unique_id = QR.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
 join km_user ku on ku.pk = qr.km_user_fk 
-join enrollment_ref er on er.code = qr.kit_tag 
+join enrollment_ref er on ER.code = replace(unique_id ,right(unique_id ,14), '') 
 --join node n on n.enrollment_ref = er.id 
 join lga l on upper(l."name") = upper(qr.dda9)
 --join state s on s.id = l.state_fk 
@@ -258,7 +258,7 @@ join bfp_sync_log bsl on bsl.unique_id = qr.unique_id
 join USER_ID UI on UI.unique_id = QR.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
 join km_user ku on ku.pk = qr.km_user_fk 
-join enrollment_ref er on er.code = qr.kit_tag 
+join enrollment_ref er on ER.code = replace(unique_id ,right(unique_id ,14), '') 
 --join node n on n.enrollment_ref = er.id 
 join lga l on upper(l."name") = upper(qr.dda9)
 --join state s on s.id = l.state_fk 
@@ -296,7 +296,7 @@ join USER_ID UI on UI.unique_id = QR.unique_id
 join sms_activation_request sar2 on sar2.unique_id = bsl.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
 join km_user ku on ku.pk = qr.km_user_fk 
-join enrollment_ref er on er.code = qr.kit_tag 
+join enrollment_ref er on ER.code = replace(unique_id ,right(unique_id ,14), '') 
 --join node n on n.enrollment_ref = er.id 
 join lga l on upper(l."name") = upper(qr.dda9)
 --join state s on s.id = l.state_fk 
@@ -332,7 +332,7 @@ from quarantined_registration qr
 join USER_ID UI on UI.unique_id = QR.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
 join km_user ku on ku.pk = qr.km_user_fk 
-join enrollment_ref er on er.code = qr.kit_tag 
+join enrollment_ref er on ER.code = replace(unique_id ,right(unique_id ,14), '') 
 --join node n on n.enrollment_ref = er.id 
 join lga l on upper(l."name") = upper(qr.dda9)
 --join state s on s.id = l.state_fk 

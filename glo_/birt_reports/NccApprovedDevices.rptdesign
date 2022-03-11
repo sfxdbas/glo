@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
-    <text-property name="title">Whitelisted Devices</text-property>
+    <text-property name="title">NCC Approved Devices</text-property>
     <list-property name="propertyBindings">
         <structure>
             <property name="name">queryText</property>
@@ -44,7 +44,7 @@
         </oda-data-source>
     </data-sources>
     <data-sets>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="whitelisted_devices" id="2620">
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="ncc_approved_devices" id="2620">
             <list-property name="columnHints">
                 <structure>
                     <property name="columnName">device</property>
@@ -70,6 +70,18 @@
                     <text-property name="displayName">datewhitelisted</text-property>
                     <text-property name="heading">datewhitelisted</text-property>
                 </structure>
+                <structure>
+                    <property name="columnName">status</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">status</text-property>
+                    <text-property name="heading">status</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">reason</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">reason</text-property>
+                    <text-property name="heading">reason</text-property>
+                </structure>
             </list-property>
             <list-property name="parameters"/>
             <structure name="cachedMetaData">
@@ -93,6 +105,16 @@
                         <property name="position">4</property>
                         <property name="name">datewhitelisted</property>
                         <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">status</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">reason</property>
+                        <property name="dataType">string</property>
                     </structure>
                 </list-property>
             </structure>
@@ -126,16 +148,33 @@
                     <property name="dataType">date-time</property>
                     <property name="nativeDataType">93</property>
                 </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">status</property>
+                    <property name="nativeName">status</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">reason</property>
+                    <property name="nativeName">reason</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[--All whitelisted devices
 --
 select distinct on (er.code) er.code as device, kd."name" as dealer, kd.deal_code as dealer_code,
-dss.last_modified as datewhitelisted
+dss.last_modified as datewhitelisted, 
+case when n.black_listed is true then 'BLACKLISTED' else 'WHITELISTED' end as status,
+case when bh.blacklist_reason is null then 'NA' else bh.blacklist_reason end as reason 
 from device_specific_setting dss 
 join enrollment_ref er on DSS.enrollment_ref_fk = er.id 
 join node n on n.enrollment_ref = er.id 
 join node_assignment na on na.node_fk = n.id 
 join kyc_dealer kd on kd.pk = na.kyc_dealer_fk 
+left join blacklist_history bh on BH.node_fk = n.id 
 where dss.setting_name in 
 (
 'PILOT-AVAILABLE-USE-CASE',
@@ -144,7 +183,7 @@ where dss.setting_name in
 'IMPROVED_NIN_VERIFICATION_USE_CASES',
 'PILOT-NIN-VERIFICATION-TYPES'
 )
-order by er.code, dss.last_modified desc 
+order by er.code, dss.last_modified desc , bh.activity_timestamp desc 
 ;]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
@@ -376,12 +415,12 @@ order by er.code, dss.last_modified desc
             <property name="fontSize">16pt</property>
             <property name="fontWeight">bold</property>
             <property name="textAlign">center</property>
-            <text-property name="text">Whitelisted Devices</text-property>
+            <text-property name="text">NCC Approved Devices</text-property>
         </label>
         <label id="2341"/>
         <label id="2449"/>
         <table id="2661">
-            <property name="dataSet">whitelisted_devices</property>
+            <property name="dataSet">ncc_approved_devices</property>
             <list-property name="boundDataColumns">
                 <structure>
                     <property name="name">device</property>
@@ -419,6 +458,18 @@ order by er.code, dss.last_modified desc
                     <expression name="expression" type="javascript">dataSetRow["datewhitelisted"]</expression>
                     <property name="dataType">date-time</property>
                 </structure>
+                <structure>
+                    <property name="name">reason</property>
+                    <text-property name="displayName">reason</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["reason"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">status</property>
+                    <text-property name="displayName">status</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">0</property>
             <column id="2674"/>
@@ -426,6 +477,8 @@ order by er.code, dss.last_modified desc
             <column id="2680"/>
             <column id="2688"/>
             <column id="2684"/>
+            <column id="2698"/>
+            <column id="2702"/>
             <header>
                 <row id="2662">
                     <property name="backgroundColor">#008400</property>
@@ -493,7 +546,33 @@ order by er.code, dss.last_modified desc
                         <property name="borderTopStyle">solid</property>
                         <property name="borderTopWidth">thin</property>
                         <label id="2691">
-                            <text-property name="text">Date Whitelisted</text-property>
+                            <text-property name="text">Device Approval Date</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2695">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2703">
+                            <text-property name="text">Status</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2699">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2704">
+                            <text-property name="text">Reason</text-property>
                         </label>
                     </cell>
                 </row>
@@ -565,6 +644,32 @@ order by er.code, dss.last_modified desc
                             <property name="resultSetColumn">datewhitelisted</property>
                         </data>
                     </cell>
+                    <cell id="2696">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2706">
+                            <property name="resultSetColumn">status</property>
+                        </data>
+                    </cell>
+                    <cell id="2700">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2705">
+                            <property name="resultSetColumn">reason</property>
+                        </data>
+                    </cell>
                 </row>
             </detail>
             <footer>
@@ -610,6 +715,26 @@ order by er.code, dss.last_modified desc
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="2683">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2697">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2701">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
