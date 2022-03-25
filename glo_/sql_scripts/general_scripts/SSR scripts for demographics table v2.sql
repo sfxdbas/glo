@@ -1,4 +1,4 @@
-create table b_msisdn_entry_keep_10022022 as 
+create table b_msisdn_entry_keep_24032022 as 
 with tab_a as (
 select * from (
 select 
@@ -9,7 +9,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select msisdn from msisdn_entry_keep_10022022 mek where mek.msisdn = qr.msisdn)
+and exists (select msisdn from msisdn_entry_keep_24032022 mek where mek.msisdn = qr.msisdn)
 ) a 
 where row_number =1
 ), tab_b as (
@@ -20,7 +20,7 @@ from bfp_sync_log bsl
 where bfpsyncstatusenum = 'SUCCESS'
 and exists (
 select 1 
-from msisdn_entry_keep_10022022 mek 
+from msisdn_entry_keep_24032022 mek 
 where mek.msisdn = bsl.msisdn 
 )
 ) b where rank_ = 1
@@ -46,7 +46,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a 
 where row_number =1
 ;
@@ -81,7 +81,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a 
 where row_number =1
 ), b as ( 
@@ -92,7 +92,7 @@ from bfp_sync_log bsl
 join user_id ui on ui.unique_id = bsl.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
 where bfpsyncstatusenum = 'SUCCESS'
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = bsl.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = bsl.msisdn)
 ) a where row_number = 1
 ) 
 select id,biometric_capture_agent, birthday::timestamp,  bd_part_key,  firstname,
@@ -128,7 +128,7 @@ join user_id ui on ui.unique_id = bsl.unique_id
 join basic_data bd on bd.user_id_fk = ui.id 
 join dynamic_data dd on dd.basic_data_fk = bd.id 
 where bfpsyncstatusenum = 'SUCCESS'
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = bsl.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = bsl.msisdn)
 ) a where row_number = 1
 ) , b as ( select * from (
 select 
@@ -148,7 +148,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a where ROW_NUMBER = 1 
 )
 select hibernate_sequence.nextval id,da1,da2,da3,da5,da6,da7,da8,da9,da10,da11,da12,da13,da14,da15,da16,da17,da18,da19,da20,da21,
@@ -185,7 +185,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a where ROW_NUMBER = 1 
 ;
 
@@ -219,7 +219,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a where ROW_NUMBER = 1 
 ;
 
@@ -258,7 +258,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a where ROW_NUMBER = 1 
 ;
 
@@ -294,7 +294,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a where ROW_NUMBER = 1 
 ;
 
@@ -336,7 +336,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a where ROW_NUMBER = 1 
 ;
 
@@ -371,7 +371,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a where ROW_NUMBER = 1 
 ;
 
@@ -407,7 +407,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a where ROW_NUMBER = 1 
 ;
 
@@ -444,7 +444,7 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a --where ROW_NUMBER = 1 
 ;
 
@@ -480,14 +480,14 @@ where check_status = 'CHECKED'
 and swap_status = 'SWAPPED' 
 and subscriber_update_status = 'FAILED' 
 and (biometric_update_consent is  true or demographic_update_consent is true or update_consent is true)
-and exists (select 1 from b_msisdn_entry_keep_10022022 bmek where bmek.msisdn = qr.msisdn)
+and exists (select 1 from b_msisdn_entry_keep_24032022 bmek where bmek.msisdn = qr.msisdn)
 ) a --where ROW_NUMBER = 1 
 ;
 
 
 
 
-select 'update sim_swap_demographic set subscriber_update_status = ''SUCCESS'' WHERE pk = '||PK||';'--, msisdn  
+select 'update sim_swap_demographic set LAST_MODIFIED=NOW,subscriber_update_status = ''SUCCESS'' WHERE pk = '||PK||';'--, msisdn  
 from (
 select 
 row_number() over (partition by msisdn order by create_date desc ),
