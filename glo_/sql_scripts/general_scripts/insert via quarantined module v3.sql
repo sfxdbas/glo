@@ -9,7 +9,7 @@ er.DEVICE_ID, '10.152.89.182' INSTANCE_IP, '8190' INSTANCE_PORT,qr.dda11 REG_TYP
 from quarantined_registration qr
 join quarantined_msisdn_detail qmd on qr.pk = qmd.quarantined_reg_fk 
 join enrollment_ref er on ER.code = replace(qr.unique_id ,right(qr.unique_id ,14), '')  
-where unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239')
+where unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893')
 and not exists 
 (select 1 from bfp_sync_log bsl where BSL.unique_id = QR.unique_id and qmd.msisdn = bsl.msisdn )
 ;
@@ -21,7 +21,7 @@ INSERT INTO public.user_id
 (id, active, blacklisted, "conflict", u_part_key, description, unique_id)
 select hibernate_sequence.nextval, NULL, NULL, false, create_date , NULL, unique_id 
 from quarantined_registration qr 
-where  unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239')
+where  unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893')
 and not exists 
 (select 1 from user_id ui where ui.unique_id = qr.unique_id )
 ;
@@ -56,7 +56,7 @@ from quarantined_registration qr
 join USER_ID UI on UI.unique_id = QR.unique_id 
 join km_user ku on ku.pk = qr.km_user_fk 
 join lga l on upper(l."name") = upper(qr.dda9)
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239'
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893'
 ) 
 and not exists 
 (select 1 from basic_data bd where bd.user_id_fk = ui.id )
@@ -94,7 +94,7 @@ join USER_ID UI on UI.unique_id = QR.unique_id
 join basic_data bd on bd.user_id_fk = ui.id 
 join km_user ku on ku.pk = qr.km_user_fk 
 join lga l on upper(l."name") = upper(qr.dda9)
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239'
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893'
 ) 
 and  not exists 
 (select 1 from dynamic_data dd where dd.basic_data_fk= bd.id )
@@ -128,7 +128,7 @@ join basic_data bd on bd.user_id_fk = ui.id
 join km_user ku on ku.pk = qr.km_user_fk 
 join enrollment_ref er on ER.code = replace(qr.unique_id ,right(qr.unique_id ,14), '')  
 join lga l on upper(l."name") = upper(qr.dda9)
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239'
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893'
 ) 
 and  not exists 
 (select 1 from enrollment_log el where el.basic_data_fk= bd.id )
@@ -167,7 +167,7 @@ join basic_data bd on bd.user_id_fk = ui.id
 join km_user ku on ku.pk = qr.km_user_fk 
 join enrollment_ref er on ER.code = replace(qr.unique_id ,right(qr.unique_id ,14), '')  
 join lga l on upper(l."name") = upper(qr.dda9)
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239'
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893'
 ) and  not exists 
 (select 1 from msisdn_detail md where md.basic_data_fk= bd.id )
 );
@@ -213,7 +213,7 @@ join enrollment_ref er on ER.code = replace(qr.unique_id ,right(qr.unique_id ,14
 --join node n on n.enrollment_ref = er.id 
 join lga l on upper(l."name") = upper(qr.dda9)
 --join state s on s.id = l.state_fk 
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239') 
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893') 
 and  not exists 
 (select 1 from meta_data md where md.basic_data_fk= bd.id )
 ) 
@@ -262,7 +262,7 @@ join enrollment_ref er on ER.code = replace(qr.unique_id ,right(qr.unique_id ,14
 --join node n on n.enrollment_ref = er.id 
 join lga l on upper(l."name") = upper(qr.dda9)
 --join state s on s.id = l.state_fk 
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239') 
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893') 
 and not exists 
 (select 1 from sms_activation_request sar where sar.unique_id = bsl.unique_id and sar.phone_number= bsl.msisdn)
 ) 
@@ -300,7 +300,7 @@ join enrollment_ref er on ER.code = replace(qr.unique_id ,right(qr.unique_id ,14
 --join node n on n.enrollment_ref = er.id 
 join lga l on upper(l."name") = upper(qr.dda9)
 --join state s on s.id = l.state_fk 
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239') 
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893') 
 and bsl.msisdn =sar2.phone_number 
 and not exists 
 (select 1 from phone_number_status pns where pns.id = sar2.phone_number_status_fk)
@@ -336,7 +336,7 @@ join enrollment_ref er on ER.code = replace(qr.unique_id ,right(qr.unique_id ,14
 --join node n on n.enrollment_ref = er.id 
 join lga l on upper(l."name") = upper(qr.dda9)
 --join state s on s.id = l.state_fk 
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239') 
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893') 
 and not exists 
 (select 1 from passport p where p.basic_data_fk = bd.id)
 ) 
@@ -370,7 +370,7 @@ select row_number() over (partition  by qr.unique_id order by qr.create_date des
 from quarantined_registration qr 
 join USER_ID UI on UI.unique_id = QR.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239')
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893')
 and not exists 
 (select 1 from wsq_image wi where wi.basic_data_fk = bd.id )
 )
@@ -406,7 +406,7 @@ select row_number() over (partition  by qr.unique_id order by qr.create_date des
 from quarantined_registration qr 
 join USER_ID UI on UI.unique_id = QR.unique_id 
 join basic_data bd on bd.user_id_fk = ui.id 
-where qr.unique_id in ('GLO-FR-183T-1648135221996','GLO-HH-ADA-FUF-AAGENCY019-769Z-1648196326230','GLO-DH-RIV-POR-GWPHC3-445W-1648196266541','GLO-DH-895N-1648114672239')
+where qr.unique_id in ('GLO-HH-NAS-NAS-GZNAS004-289V-1648297071893')
 and not exists 
 (select 1 from special_data sd where sd.basic_data_fk=bd.id)
 ))
