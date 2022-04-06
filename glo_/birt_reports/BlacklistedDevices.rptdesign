@@ -57,6 +57,12 @@
                     <text-property name="heading">reason</text-property>
                 </structure>
                 <structure>
+                    <property name="columnName">other_blacklist_reason</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">other_blacklist_reason</text-property>
+                    <text-property name="heading">other_blacklist_reason</text-property>
+                </structure>
+                <structure>
                     <property name="columnName">date_blacklisted</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">date_blacklisted</text-property>
@@ -75,6 +81,7 @@
                     <text-property name="heading">row_number</text-property>
                 </structure>
             </list-property>
+            <list-property name="parameters"/>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
                     <structure>
@@ -99,16 +106,21 @@
                     </structure>
                     <structure>
                         <property name="position">5</property>
+                        <property name="name">other_blacklist_reason</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
                         <property name="name">date_blacklisted</property>
                         <property name="dataType">date-time</property>
                     </structure>
                     <structure>
-                        <property name="position">6</property>
+                        <property name="position">7</property>
                         <property name="name">reason_type</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">7</property>
+                        <property name="position">8</property>
                         <property name="name">row_number</property>
                         <property name="dataType">decimal</property>
                     </structure>
@@ -146,20 +158,27 @@
                 </structure>
                 <structure>
                     <property name="position">5</property>
+                    <property name="name">other_blacklist_reason</property>
+                    <property name="nativeName">other_blacklist_reason</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
                     <property name="name">date_blacklisted</property>
                     <property name="nativeName">date_blacklisted</property>
                     <property name="dataType">date-time</property>
                     <property name="nativeDataType">93</property>
                 </structure>
                 <structure>
-                    <property name="position">6</property>
+                    <property name="position">7</property>
                     <property name="name">reason_type</property>
                     <property name="nativeName">reason_type</property>
                     <property name="dataType">string</property>
                     <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
-                    <property name="position">7</property>
+                    <property name="position">8</property>
                     <property name="name">row_number</property>
                     <property name="nativeName">row_number</property>
                     <property name="dataType">decimal</property>
@@ -168,7 +187,7 @@
             </list-property>
             <xml-property name="queryText"><![CDATA[select * from (
 select er.code as device_tag, kd."name" as dealer, kd.deal_code as dealer_code,
-br."name" as reason,--bh.blacklist_reason ,
+br."name" as reason,bh.blacklist_reason as other_blacklist_reason, 
 n.blacklist_date as date_blacklisted, br.reason_type 
 ,row_number () over (partition by n.id order by bh.activity_timestamp desc )
 from enrollment_ref er 
@@ -514,6 +533,12 @@ and reason_type = 'BLACKLIST'
                     </list-property>
                     <property name="allowExport">true</property>
                 </structure>
+                <structure>
+                    <property name="name">other_blacklist_reason</property>
+                    <text-property name="displayName">other_blacklist_reason</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["other_blacklist_reason"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <property name="pageBreakInterval">0</property>
             <list-property name="sort">
@@ -528,6 +553,7 @@ and reason_type = 'BLACKLIST'
             <column id="2736"/>
             <column id="2737"/>
             <column id="2738"/>
+            <column id="2751"/>
             <column id="2739"/>
             <header>
                 <row id="2697">
@@ -598,6 +624,19 @@ and reason_type = 'BLACKLIST'
                         <property name="borderTopWidth">thin</property>
                         <label id="2705">
                             <text-property name="text">Reason</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2748">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="2752">
+                            <text-property name="text">Other Blacklist Reason</text-property>
                         </label>
                     </cell>
                     <cell id="2706">
@@ -682,6 +721,19 @@ and reason_type = 'BLACKLIST'
                             <property name="resultSetColumn">reason</property>
                         </data>
                     </cell>
+                    <cell id="2749">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="2753">
+                            <property name="resultSetColumn">other_blacklist_reason</property>
+                        </data>
+                    </cell>
                     <cell id="2721">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
@@ -740,6 +792,16 @@ and reason_type = 'BLACKLIST'
                         <property name="borderTopWidth">thin</property>
                     </cell>
                     <cell id="2731">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="2750">
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">thin</property>
                         <property name="borderLeftStyle">solid</property>
