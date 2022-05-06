@@ -73,7 +73,7 @@ and date(create_date) between '2022-01-01' and '2022-04-30'
 and bfpsyncstatusenum = 'SUCCESS'
 order by msisdn ,create_date desc 
 ) 
-select hibernate_sequence.nextval,true,now,false,now,null,null,'ERROR','ESB',asl.pk,bsl.pk,NULL  
+select hibernate_sequence.nextval,true,now,false,now,null,null,'PENDING','ESB',asl.pk,bsl.pk,NULL  
 from bsl 
 /*left*/ join activation_sync_log asl on bsl.pk =asl.record_id 
 --order by 1 desc
