@@ -1,0 +1,1 @@
+ Select increase_serial ('{ 	3GLKJ001 }', 100) 
